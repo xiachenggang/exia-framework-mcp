@@ -1,0 +1,26 @@
+{
+  "name": "exia-framework-mcp",
+  "version": "1.0.0",
+  "description": "Cocos Creator 3.8.8 + eixa-framework AI 知识库 MCP Server",
+  "main": "index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "sync": "cross-env HF_ENDPOINT=https://hf-mirror.com node src/build-index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@huggingface/transformers": "^3.8.1",
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "ts-morph": "^27.0.2",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0"
+  }
+}

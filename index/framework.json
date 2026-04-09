@@ -1,0 +1,2874 @@
+{
+  "version": "1.0.0",
+  "buildTime": "2026-04-09T06:46:54.876Z",
+  "classes": {
+    "AssetInfo": {
+      "name": "AssetInfo",
+      "module": "exia-assets",
+      "description": "",
+      "methods": [],
+      "properties": [],
+      "searchText": "AssetInfo  exia-assets  "
+    },
+    "AssetLoaderAgent": {
+      "name": "AssetLoaderAgent",
+      "module": "exia-assets",
+      "description": "",
+      "methods": [
+        {
+          "name": "getAssetInfo",
+          "signature": "protected getAssetInfo(index: number): AssetInfo;",
+          "description": "通过索引获取",
+          "searchText": "getAssetInfo 通过索引获取"
+        },
+        {
+          "name": "downloadFaildAnalysis",
+          "signature": "protected downloadFaildAnalysis(): void;",
+          "description": "",
+          "searchText": "downloadFaildAnalysis "
+        },
+        {
+          "name": "setCallbacks",
+          "signature": "setCallbacks(res:",
+          "description": "",
+          "searchText": "setCallbacks "
+        }
+      ],
+      "properties": [],
+      "searchText": "AssetLoaderAgent  exia-assets getAssetInfo 通过索引获取 downloadFaildAnalysis  setCallbacks  "
+    },
+    "AssetLoader": {
+      "name": "AssetLoader",
+      "module": "exia-assets",
+      "description": "",
+      "extends": "AssetLoaderAgent",
+      "methods": [
+        {
+          "name": "start",
+          "signature": "start(assetConfigs: IAssetConfig[]): void;",
+          "description": "开始加载资源",
+          "searchText": "start \r\n开始加载资源"
+        },
+        {
+          "name": "retryDownLoadFailedAssets",
+          "signature": "retryDownLoadFailedAssets(): void;",
+          "description": "重新加载失败的资源",
+          "searchText": "retryDownLoadFailedAssets 重新加载失败的资源"
+        }
+      ],
+      "properties": [
+        {
+          "name": "onStart",
+          "type": "any",
+          "description": ""
+        }
+      ],
+      "searchText": "AssetLoader  exia-assets start \r\n开始加载资源 retryDownLoadFailedAssets 重新加载失败的资源 onStart "
+    },
+    "AssetPool": {
+      "name": "AssetPool",
+      "module": "exia-assets",
+      "description": "",
+      "methods": [
+        {
+          "name": "add",
+          "signature": "static add(asset: Asset[] | Asset, bundle?: AssetManager.Bundle, batchName?: string): void;",
+          "description": "添加资源",
+          "searchText": "add 添加资源"
+        },
+        {
+          "name": "getAllAssetPaths",
+          "signature": "static getAllAssetPaths(): string[];",
+          "description": "",
+          "searchText": "getAllAssetPaths "
+        },
+        {
+          "name": "has",
+          "signature": "static has(path: string, bundlename?: string): boolean;",
+          "description": "检查资源是否存在",
+          "searchText": "has \r\n检查资源是否存在"
+        },
+        {
+          "name": "get",
+          "signature": "static get<T extends Asset>(path: string, bundlename?: string): T;",
+          "description": "获取资源",
+          "searchText": "get \r\n获取资源"
+        },
+        {
+          "name": "hasUUID",
+          "signature": "static hasUUID(uuid: string): boolean;",
+          "description": "按 uuid 判断资源是否存在",
+          "searchText": "hasUUID \r\n按 uuid 判断资源是否存在"
+        },
+        {
+          "name": "getByUUID",
+          "signature": "static getByUUID<T extends Asset>(uuid: string): T;",
+          "description": "按 uuid 获取资源",
+          "searchText": "getByUUID \r\n按 uuid 获取资源"
+        },
+        {
+          "name": "releaseBatchAssets",
+          "signature": "static releaseBatchAssets(batchName: string): void;",
+          "description": "按资源加载批次释放资源",
+          "searchText": "releaseBatchAssets \r\n按资源加载批次释放资源"
+        },
+        {
+          "name": "releasePath",
+          "signature": "static releasePath(path: string, bundlename?: string): void;",
+          "description": "按资源路径释放资源",
+          "searchText": "releasePath \r\n按资源路径释放资源"
+        },
+        {
+          "name": "releaseDir",
+          "signature": "static releaseDir(dir: string, bundlename?: string, asset?: typeof Asset): Promise<boolean>;",
+          "description": "按 bundle、文件夹和资源类型释放资源",
+          "searchText": "releaseDir \r\n按 bundle、文件夹和资源类型释放资源"
+        },
+        {
+          "name": "releaseUUID",
+          "signature": "static releaseUUID(uuid: string): void;",
+          "description": "按 uuid 释放资源",
+          "searchText": "releaseUUID \r\n按 uuid 释放资源"
+        },
+        {
+          "name": "releaseAll",
+          "signature": "static releaseAll(): void;",
+          "description": "释放所有加载的资源",
+          "searchText": "releaseAll \r\n释放所有加载的资源"
+        }
+      ],
+      "properties": [
+        {
+          "name": "addToBatch",
+          "type": "any",
+          "description": ""
+        }
+      ],
+      "searchText": "AssetPool  exia-assets add 添加资源 getAllAssetPaths  has \r\n检查资源是否存在 get \r\n获取资源 hasUUID \r\n按 uuid 判断资源是否存在 getByUUID \r\n按 uuid 获取资源 releaseBatchAssets \r\n按资源加载批次释放资源 releasePath \r\n按资源路径释放资源 releaseDir \r\n按 bundle、文件夹和资源类型释放资源 releaseUUID \r\n按 uuid 释放资源 releaseAll \r\n释放所有加载的资源 addToBatch "
+    },
+    "AssetUtils": {
+      "name": "AssetUtils",
+      "module": "exia-assets",
+      "description": "",
+      "methods": [
+        {
+          "name": "getResourceCount",
+          "signature": "static getResourceCount(dir: string, type: typeof Asset, bundle?: AssetManager.Bundle): number;",
+          "description": "获取资源数量",
+          "searchText": "getResourceCount 获取资源数量"
+        },
+        {
+          "name": "getUUIDs",
+          "signature": "static getUUIDs(dir: string, type: typeof Asset, bundle?: AssetManager.Bundle): string[];",
+          "description": "获取资源名称",
+          "searchText": "getUUIDs 获取资源名称"
+        },
+        {
+          "name": "loadBundle",
+          "signature": "static loadBundle(bundlename: string): Promise<AssetManager.Bundle>;",
+          "description": "加载 bundle",
+          "searchText": "loadBundle 加载 bundle"
+        },
+        {
+          "name": "loadFile",
+          "signature": "static loadFile<T extends typeof Asset>(bundle: string | AssetManager.Bundle, path: string, type: T, callbacks?:",
+          "description": "加载单个资源",
+          "searchText": "loadFile \r\n加载单个资源"
+        },
+        {
+          "name": "loadDir",
+          "signature": "static loadDir<T extends typeof Asset>(bundle: string | AssetManager.Bundle, path: string, type: T, callbacks?:",
+          "description": "加载文件夹下的资源",
+          "searchText": "loadDir \r\n加载文件夹下的资源"
+        }
+      ],
+      "properties": [],
+      "searchText": "AssetUtils  exia-assets getResourceCount 获取资源数量 getUUIDs 获取资源名称 loadBundle 加载 bundle loadFile \r\n加载单个资源 loadDir \r\n加载文件夹下的资源 "
+    },
+    "IAssetConfig": {
+      "name": "IAssetConfig",
+      "module": "exia-assets",
+      "description": "",
+      "methods": [],
+      "properties": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "bundle名下的资源路径 必填"
+        },
+        {
+          "name": "type",
+          "type": "any",
+          "description": "资源类型 默认 Asset"
+        },
+        {
+          "name": "isFile",
+          "type": "boolean",
+          "description": "是否是单个文件 默认是文件夹"
+        },
+        {
+          "name": "bundle",
+          "type": "string",
+          "description": "bundle名 默认 resources"
+        }
+      ],
+      "searchText": "IAssetConfig  exia-assets  path bundle名下的资源路径 必填 type 资源类型 默认 Asset isFile 是否是单个文件 默认是文件夹 bundle bundle名 默认 resources"
+    },
+    "Header": {
+      "name": "Header",
+      "module": "exia-ui",
+      "description": "",
+      "extends": "GComponent",
+      "methods": [
+        {
+          "name": "onInit",
+          "signature": "protected abstract onInit(): void;",
+          "description": "",
+          "searchText": "onInit "
+        },
+        {
+          "name": "onShow",
+          "signature": "protected abstract onShow(userdata?: T): void;",
+          "description": "",
+          "searchText": "onShow "
+        },
+        {
+          "name": "onAdapted",
+          "signature": "protected onAdapted(): void;",
+          "description": "",
+          "searchText": "onAdapted "
+        },
+        {
+          "name": "onClose",
+          "signature": "protected onClose(): void;",
+          "description": "",
+          "searchText": "onClose "
+        },
+        {
+          "name": "onHide",
+          "signature": "protected onHide(): void;",
+          "description": "",
+          "searchText": "onHide "
+        },
+        {
+          "name": "onShowFromHide",
+          "signature": "protected onShowFromHide(): void;",
+          "description": "",
+          "searchText": "onShowFromHide "
+        },
+        {
+          "name": "isShowing",
+          "signature": "isShowing(): boolean;",
+          "description": "是否显示中",
+          "searchText": "isShowing \r\n是否显示中"
+        }
+      ],
+      "properties": [
+        {
+          "name": "adapterType",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-ui\").AdapterType",
+          "description": "窗口适配类型"
+        }
+      ],
+      "searchText": "Header  exia-ui onInit  onShow  onAdapted  onClose  onHide  onShowFromHide  isShowing \r\n是否显示中 adapterType 窗口适配类型"
+    },
+    "HeaderInfo": {
+      "name": "HeaderInfo",
+      "module": "exia-ui",
+      "description": "",
+      "methods": [
+        {
+          "name": "create",
+          "signature": "static create<T extends new () => Header<any>>(ctor: T, userdata?: ExtractHeaderUserData<ExtractHeaderInstance<T>>): HeaderInfo<ExtractHeaderUserData<ExtractHeaderInstance<T>>>;",
+          "description": "创建 HeaderInfo (类型安全)",
+          "searchText": "create \r\n创建 HeaderInfo (类型安全)"
+        },
+        {
+          "name": "createByName",
+          "signature": "static createByName<T = any>(name: string, userdata?: T): HeaderInfo<T>;",
+          "description": "通过名称创建 HeaderInfo (非类型安全)",
+          "searchText": "createByName \r\n通过名称创建 HeaderInfo (非类型安全)"
+        }
+      ],
+      "properties": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "header名字"
+        }
+      ],
+      "searchText": "HeaderInfo  exia-ui create \r\n创建 HeaderInfo (类型安全) createByName \r\n通过名称创建 HeaderInfo (非类型安全) name header名字"
+    },
+    "WindowGroup": {
+      "name": "WindowGroup",
+      "module": "exia-ui",
+      "description": "",
+      "methods": [
+        {
+          "name": "hasWindow",
+          "signature": "hasWindow(name: string): boolean;",
+          "description": "",
+          "searchText": "hasWindow "
+        },
+        {
+          "name": "getTopWindow",
+          "signature": "getTopWindow<T extends IWindow>(): T;",
+          "description": "获取窗口组顶部窗口实例",
+          "searchText": "getTopWindow \r\n获取窗口组顶部窗口实例"
+        }
+      ],
+      "properties": [
+        {
+          "name": "processWindowHideStatus",
+          "type": "any",
+          "description": "处理index下层窗口的隐藏状态的私有方法。递归调用"
+        }
+      ],
+      "searchText": "WindowGroup  exia-ui hasWindow  getTopWindow \r\n获取窗口组顶部窗口实例 processWindowHideStatus 处理index下层窗口的隐藏状态的私有方法。递归调用"
+    },
+    "WindowBase": {
+      "name": "WindowBase",
+      "module": "exia-ui",
+      "description": "",
+      "extends": "GComponent",
+      "methods": [
+        {
+          "name": "isShowing",
+          "signature": "isShowing(): boolean;",
+          "description": "",
+          "searchText": "isShowing "
+        },
+        {
+          "name": "isTop",
+          "signature": "isTop(): boolean;",
+          "description": "是否在最上层显示 (除忽略的窗口组外, 显示到最上层时)",
+          "searchText": "isTop 是否在最上层显示 (除忽略的窗口组外, 显示到最上层时)"
+        },
+        {
+          "name": "getHeaderInfo",
+          "signature": "abstract getHeaderInfo(): HeaderInfo<any>;",
+          "description": "获取窗口顶部资源栏数据 默认返回空数组",
+          "searchText": "getHeaderInfo \r\n获取窗口顶部资源栏数据 默认返回空数组"
+        },
+        {
+          "name": "refreshHeader",
+          "signature": "refreshHeader(): void;",
+          "description": "刷新顶部资源栏\r\n调用这个方法会重新创建 或者 刷新header\r\n用来在同一个界面显示不同的header",
+          "searchText": "refreshHeader \r\n刷新顶部资源栏\r\n调用这个方法会重新创建 或者 刷新header\r\n用来在同一个界面显示不同的header"
+        },
+        {
+          "name": "removeSelf",
+          "signature": "protected removeSelf(): void;",
+          "description": "用于在界面中关闭自己",
+          "searchText": "removeSelf \r\n用于在界面中关闭自己"
+        },
+        {
+          "name": "onAdapted",
+          "signature": "protected abstract onAdapted(): void;",
+          "description": "",
+          "searchText": "onAdapted "
+        },
+        {
+          "name": "onInit",
+          "signature": "protected abstract onInit(): void;",
+          "description": "",
+          "searchText": "onInit "
+        },
+        {
+          "name": "onClose",
+          "signature": "protected abstract onClose(): void;",
+          "description": "",
+          "searchText": "onClose "
+        },
+        {
+          "name": "onShow",
+          "signature": "protected abstract onShow(userdata?: T): void;",
+          "description": "",
+          "searchText": "onShow "
+        },
+        {
+          "name": "onShowFromHide",
+          "signature": "protected abstract onShowFromHide(): void;",
+          "description": "",
+          "searchText": "onShowFromHide "
+        },
+        {
+          "name": "onHide",
+          "signature": "protected abstract onHide(): void;",
+          "description": "",
+          "searchText": "onHide "
+        },
+        {
+          "name": "onToTop",
+          "signature": "protected abstract onToTop(): void;",
+          "description": "",
+          "searchText": "onToTop "
+        },
+        {
+          "name": "onToBottom",
+          "signature": "protected abstract onToBottom(): void;",
+          "description": "",
+          "searchText": "onToBottom "
+        },
+        {
+          "name": "onEmptyAreaClick",
+          "signature": "protected abstract onEmptyAreaClick(): void;",
+          "description": "",
+          "searchText": "onEmptyAreaClick "
+        }
+      ],
+      "properties": [
+        {
+          "name": "type",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-ui\").WindowType",
+          "description": "窗口类型"
+        },
+        {
+          "name": "adapterType",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-ui\").AdapterType",
+          "description": "窗口适配类型"
+        },
+        {
+          "name": "bgAlpha",
+          "type": "number",
+          "description": "底部遮罩的透明度"
+        }
+      ],
+      "searchText": "WindowBase  exia-ui isShowing  isTop 是否在最上层显示 (除忽略的窗口组外, 显示到最上层时) getHeaderInfo \r\n获取窗口顶部资源栏数据 默认返回空数组 refreshHeader \r\n刷新顶部资源栏\r\n调用这个方法会重新创建 或者 刷新header\r\n用来在同一个界面显示不同的header removeSelf \r\n用于在界面中关闭自己 onAdapted  onInit  onClose  onShow  onShowFromHide  onHide  onToTop  onToBottom  onEmptyAreaClick  type 窗口类型 adapterType 窗口适配类型 bgAlpha 底部遮罩的透明度"
+    },
+    "Window": {
+      "name": "Window",
+      "module": "exia-ui",
+      "description": "",
+      "extends": "WindowBase",
+      "methods": [
+        {
+          "name": "onAdapted",
+          "signature": "protected onAdapted(): void;",
+          "description": "",
+          "searchText": "onAdapted "
+        },
+        {
+          "name": "onInit",
+          "signature": "protected abstract onInit(): void;",
+          "description": "",
+          "searchText": "onInit "
+        },
+        {
+          "name": "onClose",
+          "signature": "protected abstract onClose(): void;",
+          "description": "",
+          "searchText": "onClose "
+        },
+        {
+          "name": "onShow",
+          "signature": "protected abstract onShow(userdata?: T): void;",
+          "description": "",
+          "searchText": "onShow "
+        },
+        {
+          "name": "onHide",
+          "signature": "protected onHide(): void;",
+          "description": "",
+          "searchText": "onHide "
+        },
+        {
+          "name": "onShowFromHide",
+          "signature": "protected onShowFromHide(): void;",
+          "description": "",
+          "searchText": "onShowFromHide "
+        },
+        {
+          "name": "onToTop",
+          "signature": "protected onToTop(): void;",
+          "description": "",
+          "searchText": "onToTop "
+        },
+        {
+          "name": "onToBottom",
+          "signature": "protected onToBottom(): void;",
+          "description": "",
+          "searchText": "onToBottom "
+        },
+        {
+          "name": "onEmptyAreaClick",
+          "signature": "protected onEmptyAreaClick(): void;",
+          "description": "空白区域点击事件处理函数。\r\n当用户点击窗口的空白区域时触发此方法。",
+          "searchText": "onEmptyAreaClick \r\n空白区域点击事件处理函数。\r\n当用户点击窗口的空白区域时触发此方法。"
+        },
+        {
+          "name": "getHeaderInfo",
+          "signature": "getHeaderInfo(): HeaderInfo<any>;",
+          "description": "获取窗口顶部资源栏数据 默认返回空数组",
+          "searchText": "getHeaderInfo \r\n获取窗口顶部资源栏数据 默认返回空数组"
+        }
+      ],
+      "properties": [],
+      "searchText": "Window  exia-ui onAdapted  onInit  onClose  onShow  onHide  onShowFromHide  onToTop  onToBottom  onEmptyAreaClick \r\n空白区域点击事件处理函数。\r\n当用户点击窗口的空白区域时触发此方法。 getHeaderInfo \r\n获取窗口顶部资源栏数据 默认返回空数组 "
+    },
+    "WindowManager": {
+      "name": "WindowManager",
+      "module": "exia-ui",
+      "description": "",
+      "methods": [
+        {
+          "name": "addManualPackage",
+          "signature": "static addManualPackage(pkgName: string): void;",
+          "description": "添加手动管理资源加载 和 卸载的包名",
+          "searchText": "addManualPackage \r\n添加手动管理资源加载 和 卸载的包名"
+        },
+        {
+          "name": "setPackageInfo",
+          "signature": "static setPackageInfo(pkgName: string, bundleName?: string, path?: string): void;",
+          "description": "提供一种特殊需求 用来手动设置包所在的 bundle名 以及包在bundle中的路径",
+          "searchText": "setPackageInfo \r\n提供一种特殊需求 用来手动设置包所在的 bundle名 以及包在bundle中的路径"
+        },
+        {
+          "name": "setUIConfig",
+          "signature": "static setUIConfig(config: IPropsConfig): void;",
+          "description": "用于手动设置UI导出数据",
+          "searchText": "setUIConfig \r\n用于手动设置UI导出数据"
+        },
+        {
+          "name": "setPackageCallbacks",
+          "signature": "static setPackageCallbacks(callbacks:",
+          "description": "设置UI包加载相关回调函数",
+          "searchText": "setPackageCallbacks \r\n设置UI包加载相关回调函数"
+        },
+        {
+          "name": "showWindow",
+          "signature": "static showWindow<T extends new () => Window<any, any>>(window: T, userdata?: ExtractUserData<ExtractWindowInstance<T>>): Promise<ExtractWindowInstance<T>>;",
+          "description": "异步打开一个窗口 (如果UI包的资源未加载, 会自动加载 可以配合 WindowManager.setPackageCallbacks一起使用)",
+          "searchText": "showWindow \r\n异步打开一个窗口 (如果UI包的资源未加载, 会自动加载 可以配合 WindowManager.setPackageCallbacks一起使用)"
+        },
+        {
+          "name": "closeWindow",
+          "signature": "static closeWindow<T extends new () => IWindow>(window: T): void;",
+          "description": "关闭一个窗口",
+          "searchText": "closeWindow \r\n关闭一个窗口"
+        },
+        {
+          "name": "closeWindowByName",
+          "signature": "static closeWindowByName(name: string): void;",
+          "description": "通过窗口名称关闭一个窗口",
+          "searchText": "closeWindowByName \r\n通过窗口名称关闭一个窗口"
+        },
+        {
+          "name": "hasWindow",
+          "signature": "static hasWindow(name: string): boolean;",
+          "description": "是否存在窗口",
+          "searchText": "hasWindow \r\n是否存在窗口"
+        },
+        {
+          "name": "getWindow",
+          "signature": "static getWindow<T extends IWindow>(name: string): T | undefined;",
+          "description": "根据窗口名称获取窗口实例。",
+          "searchText": "getWindow \r\n根据窗口名称获取窗口实例。"
+        },
+        {
+          "name": "getTopWindow",
+          "signature": "static getTopWindow<T extends IWindow, U>(isAll?: boolean): T | null;",
+          "description": "获取当前最顶层的窗口实例。\r\n默认会忽略掉忽略查询的窗口组",
+          "searchText": "getTopWindow \r\n获取当前最顶层的窗口实例。\r\n默认会忽略掉忽略查询的窗口组"
+        },
+        {
+          "name": "getGroupNames",
+          "signature": "static getGroupNames(): string[];",
+          "description": "获取所有窗口组的名称列表（按层级顺序）",
+          "searchText": "getGroupNames \r\n获取所有窗口组的名称列表（按层级顺序）"
+        },
+        {
+          "name": "getWindowGroup",
+          "signature": "static getWindowGroup(name: string): WindowGroup;",
+          "description": "根据给定的组名获取窗口组。如果组不存在，则抛出错误。",
+          "searchText": "getWindowGroup \r\n根据给定的组名获取窗口组。如果组不存在，则抛出错误。"
+        },
+        {
+          "name": "closeAllWindow",
+          "signature": "static closeAllWindow(ignores?: IWindow[]): void;",
+          "description": "关闭所有窗口",
+          "searchText": "closeAllWindow \r\n关闭所有窗口"
+        },
+        {
+          "name": "releaseUnusedRes",
+          "signature": "static releaseUnusedRes(): void;",
+          "description": "释放不再使用中的自动加载的UI资源\r\n针对在 UIModule 中设置了不自动释放资源的场景",
+          "searchText": "releaseUnusedRes \r\n释放不再使用中的自动加载的UI资源\r\n针对在 UIModule 中设置了不自动释放资源的场景"
+        }
+      ],
+      "properties": [
+        {
+          "name": "_bgAlpha",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_bgColor",
+          "type": "any",
+          "description": ""
+        }
+      ],
+      "searchText": "WindowManager  exia-ui addManualPackage \r\n添加手动管理资源加载 和 卸载的包名 setPackageInfo \r\n提供一种特殊需求 用来手动设置包所在的 bundle名 以及包在bundle中的路径 setUIConfig \r\n用于手动设置UI导出数据 setPackageCallbacks \r\n设置UI包加载相关回调函数 showWindow \r\n异步打开一个窗口 (如果UI包的资源未加载, 会自动加载 可以配合 WindowManager.setPackageCallbacks一起使用) closeWindow \r\n关闭一个窗口 closeWindowByName \r\n通过窗口名称关闭一个窗口 hasWindow \r\n是否存在窗口 getWindow \r\n根据窗口名称获取窗口实例。 getTopWindow \r\n获取当前最顶层的窗口实例。\r\n默认会忽略掉忽略查询的窗口组 getGroupNames \r\n获取所有窗口组的名称列表（按层级顺序） getWindowGroup \r\n根据给定的组名获取窗口组。如果组不存在，则抛出错误。 closeAllWindow \r\n关闭所有窗口 releaseUnusedRes \r\n释放不再使用中的自动加载的UI资源\r\n针对在 UIModule 中设置了不自动释放资源的场景 _bgAlpha  _bgColor "
+    },
+    "CocosWindowContainer": {
+      "name": "CocosWindowContainer",
+      "module": "exia-ccui",
+      "description": "",
+      "extends": "Component",
+      "methods": [],
+      "properties": [
+        {
+          "name": "ignoreQuery",
+          "type": "boolean",
+          "description": ""
+        },
+        {
+          "name": "swallowTouch",
+          "type": "boolean",
+          "description": ""
+        }
+      ],
+      "searchText": "CocosWindowContainer  exia-ccui  ignoreQuery  swallowTouch "
+    },
+    "UIModule": {
+      "name": "UIModule",
+      "module": "exia-ui",
+      "description": "",
+      "extends": "Module",
+      "methods": [
+        {
+          "name": "onInit",
+          "signature": "onInit(): void;",
+          "description": "",
+          "searchText": "onInit "
+        }
+      ],
+      "properties": [
+        {
+          "name": "ui_config",
+          "type": "JsonAsset",
+          "description": ""
+        },
+        {
+          "name": "bgAlpha",
+          "type": "number",
+          "description": ""
+        },
+        {
+          "name": "autoReleaseUIRes",
+          "type": "boolean",
+          "description": ""
+        },
+        {
+          "name": "moduleName",
+          "type": "string",
+          "description": "模块名称"
+        }
+      ],
+      "searchText": "UIModule  exia-ui onInit  ui_config  bgAlpha  autoReleaseUIRes  moduleName 模块名称"
+    },
+    "IDecoratorInfo": {
+      "name": "IDecoratorInfo",
+      "module": "exia-ui",
+      "description": "窗口属性基类",
+      "methods": [],
+      "properties": [
+        {
+          "name": "ctor",
+          "type": "any",
+          "description": "构造函数"
+        },
+        {
+          "name": "props",
+          "type": "Record<string, 1>",
+          "description": "属性"
+        },
+        {
+          "name": "callbacks",
+          "type": "Record<string, Function>",
+          "description": "方法"
+        },
+        {
+          "name": "controls",
+          "type": "Record<string, 1>",
+          "description": "控制器"
+        },
+        {
+          "name": "transitions",
+          "type": "Record<string, 1>",
+          "description": "动画"
+        },
+        {
+          "name": "res",
+          "type": "{ pkg: string; name: string; group?: string; inlinePkgs?: string[]; }",
+          "description": ""
+        }
+      ],
+      "searchText": "IDecoratorInfo 窗口属性基类 exia-ui  ctor 构造函数 props 属性 callbacks 方法 controls 控制器 transitions 动画 res "
+    },
+    "IHeader": {
+      "name": "IHeader",
+      "module": "exia-ui",
+      "description": "",
+      "methods": [
+        {
+          "name": "isShowing",
+          "signature": "isShowing(): boolean;",
+          "description": "是否显示中",
+          "searchText": "isShowing \r\n是否显示中"
+        }
+      ],
+      "properties": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "资源栏名称"
+        },
+        {
+          "name": "adapterType",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-ui\").AdapterType",
+          "description": "窗口适配类型"
+        }
+      ],
+      "searchText": "IHeader  exia-ui isShowing \r\n是否显示中 name 资源栏名称 adapterType 窗口适配类型"
+    },
+    "IWindow": {
+      "name": "IWindow",
+      "module": "exia-ui",
+      "description": "",
+      "methods": [
+        {
+          "name": "isShowing",
+          "signature": "isShowing(): boolean;",
+          "description": "窗口是否显示",
+          "searchText": "isShowing \r\n窗口是否显示"
+        },
+        {
+          "name": "isTop",
+          "signature": "isTop(): boolean;",
+          "description": "窗口是否在最上层",
+          "searchText": "isTop \r\n窗口是否在最上层\r\n"
+        },
+        {
+          "name": "getHeaderInfo",
+          "signature": "getHeaderInfo(): HeaderInfo<any>;",
+          "description": "获取资源栏数据",
+          "searchText": "getHeaderInfo 获取资源栏数据"
+        },
+        {
+          "name": "refreshHeader",
+          "signature": "refreshHeader(): void;",
+          "description": "刷新资源栏",
+          "searchText": "refreshHeader 刷新资源栏"
+        }
+      ],
+      "properties": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "窗口名称"
+        },
+        {
+          "name": "type",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-ui\").WindowType",
+          "description": "窗口类型"
+        },
+        {
+          "name": "adapterType",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-ui\").AdapterType",
+          "description": "窗口适配类型"
+        },
+        {
+          "name": "bgAlpha",
+          "type": "number",
+          "description": "底部遮罩的透明度"
+        }
+      ],
+      "searchText": "IWindow  exia-ui isShowing \r\n窗口是否显示 isTop \r\n窗口是否在最上层\r\n getHeaderInfo 获取资源栏数据 refreshHeader 刷新资源栏 name 窗口名称 type 窗口类型 adapterType 窗口适配类型 bgAlpha 底部遮罩的透明度"
+    },
+    "IWindowInfo": {
+      "name": "IWindowInfo",
+      "module": "exia-ccui",
+      "description": "",
+      "methods": [],
+      "properties": [
+        {
+          "name": "ctor",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "group",
+          "type": "string",
+          "description": "窗口组名"
+        },
+        {
+          "name": "prefabPath",
+          "type": "string",
+          "description": "预制体路径（bundle 内，不含扩展名）"
+        },
+        {
+          "name": "bundleName",
+          "type": "string",
+          "description": "所在 bundle，默认 \"resources\""
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "窗口注册名"
+        },
+        {
+          "name": "inlinePrefabPaths",
+          "type": "string[]",
+          "description": "需要同步加载的额外预制体路径"
+        }
+      ],
+      "searchText": "IWindowInfo  exia-ccui  ctor  group 窗口组名 prefabPath 预制体路径（bundle 内，不含扩展名） bundleName 所在 bundle，默认 \"resources\" name 窗口注册名 inlinePrefabPaths 需要同步加载的额外预制体路径"
+    },
+    "getWindowMaps": {
+      "name": "getWindowMaps",
+      "module": "exia-ui",
+      "description": "获取窗口注册信息",
+      "kind": "function",
+      "signature": "function getWindowMaps(): Map<any, IDecoratorInfo>;",
+      "methods": [],
+      "properties": [],
+      "searchText": "getWindowMaps 获取窗口注册信息 exia-ui"
+    },
+    "getComponentMaps": {
+      "name": "getComponentMaps",
+      "module": "exia-ui",
+      "description": "获取组件注册信息",
+      "kind": "function",
+      "signature": "function getComponentMaps(): Map<any, IDecoratorInfo>;",
+      "methods": [],
+      "properties": [],
+      "searchText": "getComponentMaps 获取组件注册信息 exia-ui"
+    },
+    "getHeaderMaps": {
+      "name": "getHeaderMaps",
+      "module": "exia-ui",
+      "description": "获取header注册信息",
+      "kind": "function",
+      "signature": "function getHeaderMaps(): Map<any, IDecoratorInfo>;",
+      "methods": [],
+      "properties": [],
+      "searchText": "getHeaderMaps 获取header注册信息 exia-ui"
+    },
+    "uiclass": {
+      "name": "uiclass",
+      "module": "exia-ui",
+      "description": "窗口装饰器",
+      "kind": "function",
+      "signature": "function uiclass(groupName: string, pkgName: string, name: string, inlinePkgs?: string[] | string): Function;",
+      "methods": [],
+      "properties": [],
+      "searchText": "uiclass 窗口装饰器 exia-ui"
+    },
+    "uicom": {
+      "name": "uicom",
+      "module": "exia-ui",
+      "description": "UI组件装饰器",
+      "kind": "function",
+      "signature": "function uicom(pkg: string, name: string): Function;",
+      "methods": [],
+      "properties": [],
+      "searchText": "uicom UI组件装饰器 exia-ui"
+    },
+    "uiheader": {
+      "name": "uiheader",
+      "module": "exia-ui",
+      "description": "UI header装饰器",
+      "kind": "function",
+      "signature": "function uiheader(pkg: string, name: string): Function;",
+      "methods": [],
+      "properties": [],
+      "searchText": "uiheader UI header装饰器 exia-ui"
+    },
+    "uiprop": {
+      "name": "uiprop",
+      "module": "exia-ui",
+      "description": "UI属性装饰器",
+      "kind": "function",
+      "signature": "function uiprop(target: Object, name: string): any;",
+      "methods": [],
+      "properties": [],
+      "searchText": "uiprop UI属性装饰器 exia-ui"
+    },
+    "uiclick": {
+      "name": "uiclick",
+      "module": "exia-ui",
+      "description": "方法装饰器 (给点击事件用)",
+      "kind": "function",
+      "signature": "function uiclick(target: Object, name: string, descriptor: PropertyDescriptor): void;",
+      "methods": [],
+      "properties": [],
+      "searchText": "uiclick 方法装饰器 (给点击事件用) exia-ui"
+    },
+    "uitransition": {
+      "name": "uitransition",
+      "module": "exia-ui",
+      "description": "UI动画装饰器",
+      "kind": "function",
+      "signature": "function uitransition(target: Object, name: string): any;",
+      "methods": [],
+      "properties": [],
+      "searchText": "uitransition UI动画装饰器 exia-ui"
+    },
+    "Adapter": {
+      "name": "Adapter",
+      "module": "exia-core",
+      "description": "",
+      "methods": [
+        {
+          "name": "addResizeListener",
+          "signature": "addResizeListener(listener: (...args: any) => void): void;",
+          "description": "添加屏幕尺寸发生变化的监听",
+          "searchText": "addResizeListener \r\n添加屏幕尺寸发生变化的监听"
+        },
+        {
+          "name": "removeResizeListener",
+          "signature": "removeResizeListener(listener: (...args: any) => void): void;",
+          "description": "移除屏幕尺寸发生变化的监听",
+          "searchText": "removeResizeListener \r\n移除屏幕尺寸发生变化的监听"
+        }
+      ],
+      "properties": [
+        {
+          "name": "instance",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-core\").Adapter",
+          "description": "适配器实例"
+        }
+      ],
+      "searchText": "Adapter  exia-core addResizeListener \r\n添加屏幕尺寸发生变化的监听 removeResizeListener \r\n移除屏幕尺寸发生变化的监听 instance 适配器实例"
+    },
+    "CocosEntry": {
+      "name": "CocosEntry",
+      "module": "exia-core",
+      "description": "",
+      "extends": "Component",
+      "methods": [
+        {
+          "name": "onInit",
+          "signature": "abstract onInit(): void;",
+          "description": "虚函数，子类需要实现\r\n自定义库初始化完成后调用",
+          "searchText": "onInit \r\n虚函数，子类需要实现\r\n自定义库初始化完成后调用"
+        }
+      ],
+      "properties": [
+        {
+          "name": "fps",
+          "type": "number",
+          "description": ""
+        },
+        {
+          "name": "enableDebug",
+          "type": "boolean",
+          "description": ""
+        },
+        {
+          "name": "initTime",
+          "type": "any",
+          "description": "时间相关"
+        }
+      ],
+      "searchText": "CocosEntry  exia-core onInit \r\n虚函数，子类需要实现\r\n自定义库初始化完成后调用 fps  enableDebug  initTime 时间相关"
+    },
+    "Module": {
+      "name": "Module",
+      "module": "exia-core",
+      "description": "",
+      "extends": "Component",
+      "methods": [
+        {
+          "name": "onInit",
+          "signature": "protected abstract onInit(): void;",
+          "description": "虚函数，子类需要实现\r\n模块初始化完成后调用的函数",
+          "searchText": "onInit \r\n虚函数，子类需要实现\r\n模块初始化完成后调用的函数"
+        }
+      ],
+      "properties": [
+        {
+          "name": "moduleName",
+          "type": "string",
+          "description": "模块名称"
+        }
+      ],
+      "searchText": "Module  exia-core onInit \r\n虚函数，子类需要实现\r\n模块初始化完成后调用的函数 moduleName 模块名称"
+    },
+    "Platform": {
+      "name": "Platform",
+      "module": "exia-core",
+      "description": "",
+      "methods": [],
+      "properties": [
+        {
+          "name": "isNative",
+          "type": "boolean",
+          "description": "是否为原生平台"
+        },
+        {
+          "name": "isMobile",
+          "type": "boolean",
+          "description": "是否为移动平台"
+        },
+        {
+          "name": "isNativeMobile",
+          "type": "boolean",
+          "description": "是否为原生移动平台"
+        },
+        {
+          "name": "isAndroid",
+          "type": "boolean",
+          "description": "是否为安卓平台"
+        },
+        {
+          "name": "isIOS",
+          "type": "boolean",
+          "description": "是否为IOS平台"
+        },
+        {
+          "name": "isHarmonyOS",
+          "type": "boolean",
+          "description": "是否为HarmonyOS平台"
+        },
+        {
+          "name": "isWX",
+          "type": "boolean",
+          "description": "是否为微信小游戏"
+        },
+        {
+          "name": "isBrowser",
+          "type": "boolean",
+          "description": "是否为浏览器"
+        },
+        {
+          "name": "platform",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-core\").PlatformType",
+          "description": "平台类型"
+        },
+        {
+          "name": "deviceId",
+          "type": "string",
+          "description": "设备ID"
+        }
+      ],
+      "searchText": "Platform  exia-core  isNative 是否为原生平台 isMobile 是否为移动平台 isNativeMobile 是否为原生移动平台 isAndroid 是否为安卓平台 isIOS 是否为IOS平台 isHarmonyOS 是否为HarmonyOS平台 isWX 是否为微信小游戏 isBrowser 是否为浏览器 platform 平台类型 deviceId 设备ID"
+    },
+    "Screen": {
+      "name": "Screen",
+      "module": "exia-core",
+      "description": "",
+      "methods": [],
+      "properties": [
+        {
+          "name": "ScreenWidth",
+          "type": "number",
+          "description": "屏幕宽度"
+        },
+        {
+          "name": "ScreenHeight",
+          "type": "number",
+          "description": "屏幕高度"
+        },
+        {
+          "name": "DesignWidth",
+          "type": "number",
+          "description": "设计分辨率宽"
+        },
+        {
+          "name": "DesignHeight",
+          "type": "number",
+          "description": "设计分辨率高"
+        },
+        {
+          "name": "SafeAreaHeight",
+          "type": "number",
+          "description": "安全区外一侧的高度 或 宽度"
+        },
+        {
+          "name": "SafeWidth",
+          "type": "number",
+          "description": "安全区的宽度"
+        },
+        {
+          "name": "SafeHeight",
+          "type": "number",
+          "description": "安全区的高度"
+        }
+      ],
+      "searchText": "Screen  exia-core  ScreenWidth 屏幕宽度 ScreenHeight 屏幕高度 DesignWidth 设计分辨率宽 DesignHeight 设计分辨率高 SafeAreaHeight 安全区外一侧的高度 或 宽度 SafeWidth 安全区的宽度 SafeHeight 安全区的高度"
+    },
+    "Binary": {
+      "name": "Binary",
+      "module": "exia-core",
+      "description": "",
+      "methods": [
+        {
+          "name": "toBinary",
+          "signature": "static toBinary(obj: any): Uint8Array;",
+          "description": "将对象转换为二进制数据",
+          "searchText": "toBinary \r\n将对象转换为二进制数据"
+        },
+        {
+          "name": "toJson",
+          "signature": "static toJson(binary: any): any;",
+          "description": "将二进制数据转换JSON数据",
+          "searchText": "toJson \r\n将二进制数据转换JSON数据"
+        },
+        {
+          "name": "isBinaryFormat",
+          "signature": "static isBinaryFormat(data: Uint8Array): boolean;",
+          "description": "检查数据是否为二进制格式",
+          "searchText": "isBinaryFormat \r\n检查数据是否为二进制格式"
+        }
+      ],
+      "properties": [],
+      "searchText": "Binary  exia-core toBinary \r\n将对象转换为二进制数据 toJson \r\n将二进制数据转换JSON数据 isBinaryFormat \r\n检查数据是否为二进制格式 "
+    },
+    "Time": {
+      "name": "Time",
+      "module": "exia-core",
+      "description": "",
+      "methods": [
+        {
+          "name": "setNetTime",
+          "signature": "static setNetTime(netTime: number): void;",
+          "description": "设置网络时间, 单位ms",
+          "searchText": "setNetTime \r\n设置网络时间, 单位ms"
+        },
+        {
+          "name": "now",
+          "signature": "static now(): number;",
+          "description": "获取当前时间 单位ms",
+          "searchText": "now \r\n获取当前时间 单位ms"
+        },
+        {
+          "name": "msTos",
+          "signature": "static msTos(ms: number): number;",
+          "description": "将毫秒转换为秒",
+          "searchText": "msTos \r\n将毫秒转换为秒"
+        },
+        {
+          "name": "sToMs",
+          "signature": "static sToMs(s: number): number;",
+          "description": "将秒转换为毫秒",
+          "searchText": "sToMs \r\n将秒转换为毫秒"
+        },
+        {
+          "name": "getYear",
+          "signature": "static getYear(timestamp?: number): number;",
+          "description": "获取年份",
+          "searchText": "getYear \r\n获取年份"
+        },
+        {
+          "name": "getMonth",
+          "signature": "static getMonth(timestamp?: number): number;",
+          "description": "获取月份",
+          "searchText": "getMonth \r\n获取月份"
+        },
+        {
+          "name": "getDay",
+          "signature": "static getDay(timestamp?: number): number;",
+          "description": "获取日期",
+          "searchText": "getDay \r\n获取日期"
+        },
+        {
+          "name": "getHour",
+          "signature": "static getHour(timestamp?: number): number;",
+          "description": "获取小时",
+          "searchText": "getHour \r\n获取小时"
+        },
+        {
+          "name": "getMinute",
+          "signature": "static getMinute(timestamp?: number): number;",
+          "description": "获取分钟",
+          "searchText": "getMinute \r\n获取分钟"
+        },
+        {
+          "name": "getSecond",
+          "signature": "static getSecond(timestamp?: number): number;",
+          "description": "获取秒",
+          "searchText": "getSecond \r\n获取秒"
+        },
+        {
+          "name": "getDayStartTime",
+          "signature": "static getDayStartTime(timestamp?: number): number;",
+          "description": "获取当天开始时间",
+          "searchText": "getDayStartTime \r\n获取当天开始时间"
+        },
+        {
+          "name": "getDayEndTime",
+          "signature": "static getDayEndTime(timestamp?: number): number;",
+          "description": "获取当天的结束时间",
+          "searchText": "getDayEndTime \r\n获取当天的结束时间"
+        },
+        {
+          "name": "getWeekDay",
+          "signature": "static getWeekDay(time?: number): number;",
+          "description": "获取传入时间是周几",
+          "searchText": "getWeekDay \r\n获取传入时间是周几"
+        },
+        {
+          "name": "getWeekStartTime",
+          "signature": "static getWeekStartTime(timestamp?: number): number;",
+          "description": "获取当前周的开始时间",
+          "searchText": "getWeekStartTime \r\n获取当前周的开始时间"
+        },
+        {
+          "name": "getWeekEndTime",
+          "signature": "static getWeekEndTime(timestamp?: number): number;",
+          "description": "",
+          "searchText": "getWeekEndTime "
+        },
+        {
+          "name": "getMonthStartTime",
+          "signature": "static getMonthStartTime(timestamp?: number): number;",
+          "description": "获取当前月开始时间",
+          "searchText": "getMonthStartTime \r\n获取当前月开始时间"
+        },
+        {
+          "name": "getMonthEndTime",
+          "signature": "static getMonthEndTime(timestamp?: number): number;",
+          "description": "获取当前月结束时间",
+          "searchText": "getMonthEndTime \r\n获取当前月结束时间"
+        },
+        {
+          "name": "getYearStartTime",
+          "signature": "static getYearStartTime(timestamp?: number): number;",
+          "description": "获取当前年份开始时间",
+          "searchText": "getYearStartTime \r\n获取当前年份开始时间"
+        },
+        {
+          "name": "getYearEndTime",
+          "signature": "static getYearEndTime(timestamp?: number): number;",
+          "description": "获取当前年份结束时间",
+          "searchText": "getYearEndTime \r\n获取当前年份结束时间"
+        },
+        {
+          "name": "getMonthDays",
+          "signature": "static getMonthDays(timestamp?: number): number;",
+          "description": "获取当前月的天数",
+          "searchText": "getMonthDays \r\n获取当前月的天数"
+        },
+        {
+          "name": "isSameDay",
+          "signature": "static isSameDay(timestamp1: number, now?: number): boolean;",
+          "description": "是否是同一天",
+          "searchText": "isSameDay \r\n是否是同一天"
+        },
+        {
+          "name": "isSameWeek",
+          "signature": "static isSameWeek(timestamp1: number, now?: number): boolean;",
+          "description": "是否是同一周",
+          "searchText": "isSameWeek \r\n是否是同一周"
+        },
+        {
+          "name": "isSameMonth",
+          "signature": "static isSameMonth(timestamp1: number, now?: number): boolean;",
+          "description": "是否是同一月",
+          "searchText": "isSameMonth \r\n是否是同一月"
+        },
+        {
+          "name": "isSameYear",
+          "signature": "static isSameYear(timestamp1: number, now?: number): boolean;",
+          "description": "是否是同一年",
+          "searchText": "isSameYear \r\n是否是同一年"
+        },
+        {
+          "name": "format",
+          "signature": "static format(timestamp: number, pattern: string): string;",
+          "description": "通用时间格式化方法",
+          "searchText": "format \r\n通用时间格式化方法"
+        },
+        {
+          "name": "formatTime",
+          "signature": "static formatTime(timestamp: number): string;",
+          "description": "格式化时间 格式: xxxx-xx-xx hh:mm:ss",
+          "searchText": "formatTime \r\n格式化时间 格式: xxxx-xx-xx hh:mm:ss"
+        },
+        {
+          "name": "formatTimeChinese",
+          "signature": "static formatTimeChinese(timestamp: number): string;",
+          "description": "格式化时间 格式: xxxx年xx月xx日 hh:mm:ss",
+          "searchText": "formatTimeChinese \r\n格式化时间 格式: xxxx年xx月xx日 hh:mm:ss"
+        },
+        {
+          "name": "formatDuration",
+          "signature": "static formatDuration(seconds: number, pattern: string, options?:",
+          "description": "通用时长格式化方法",
+          "searchText": "formatDuration \r\n通用时长格式化方法"
+        },
+        {
+          "name": "formatSmart",
+          "signature": "static formatSmart(time: number, pattern?: string): string;",
+          "description": "智能格式化时长 - 自动隐藏为0的高位单位",
+          "searchText": "formatSmart \r\n智能格式化时长 - 自动隐藏为0的高位单位"
+        },
+        {
+          "name": "formatSmartSimple",
+          "signature": "static formatSmartSimple(time: number, pattern?: string): string;",
+          "description": "智能格式化时长(简化版) - 只显示最大的两个单位，较小单位向上取整",
+          "searchText": "formatSmartSimple \r\n智能格式化时长(简化版) - 只显示最大的两个单位，较小单位向上取整"
+        }
+      ],
+      "properties": [],
+      "searchText": "Time  exia-core setNetTime \r\n设置网络时间, 单位ms now \r\n获取当前时间 单位ms msTos \r\n将毫秒转换为秒 sToMs \r\n将秒转换为毫秒 getYear \r\n获取年份 getMonth \r\n获取月份 getDay \r\n获取日期 getHour \r\n获取小时 getMinute \r\n获取分钟 getSecond \r\n获取秒 getDayStartTime \r\n获取当天开始时间 getDayEndTime \r\n获取当天的结束时间 getWeekDay \r\n获取传入时间是周几 getWeekStartTime \r\n获取当前周的开始时间 getWeekEndTime  getMonthStartTime \r\n获取当前月开始时间 getMonthEndTime \r\n获取当前月结束时间 getYearStartTime \r\n获取当前年份开始时间 getYearEndTime \r\n获取当前年份结束时间 getMonthDays \r\n获取当前月的天数 isSameDay \r\n是否是同一天 isSameWeek \r\n是否是同一周 isSameMonth \r\n是否是同一月 isSameYear \r\n是否是同一年 format \r\n通用时间格式化方法 formatTime \r\n格式化时间 格式: xxxx-xx-xx hh:mm:ss formatTimeChinese \r\n格式化时间 格式: xxxx年xx月xx日 hh:mm:ss formatDuration \r\n通用时长格式化方法 formatSmart \r\n智能格式化时长 - 自动隐藏为0的高位单位 formatSmartSimple \r\n智能格式化时长(简化版) - 只显示最大的两个单位，较小单位向上取整 "
+    },
+    "Utils": {
+      "name": "Utils",
+      "module": "exia-core",
+      "description": "",
+      "methods": [
+        {
+          "name": "compareVersion",
+          "signature": "static compareVersion(version1: string, version2: string): number;",
+          "description": "版本号比较",
+          "searchText": "compareVersion \r\n版本号比较"
+        },
+        {
+          "name": "isJsonString",
+          "signature": "static isJsonString(str: string): boolean;",
+          "description": "判断传入的字符串是否是json格式的字符串",
+          "searchText": "isJsonString \r\n判断传入的字符串是否是json格式的字符串"
+        },
+        {
+          "name": "getUrlParam",
+          "signature": "static getUrlParam(url: string):",
+          "description": "获取url参数",
+          "searchText": "getUrlParam \r\n获取url参数"
+        },
+        {
+          "name": "addUrlParam",
+          "signature": "static addUrlParam(url: string, key: string, value: string): string;",
+          "description": "给url添加参数",
+          "searchText": "addUrlParam \r\n给url添加参数"
+        }
+      ],
+      "properties": [],
+      "searchText": "Utils  exia-core compareVersion \r\n版本号比较 isJsonString \r\n判断传入的字符串是否是json格式的字符串 getUrlParam \r\n获取url参数 addUrlParam \r\n给url添加参数 "
+    },
+    "GlobalTimer": {
+      "name": "GlobalTimer",
+      "module": "exia-core",
+      "description": "",
+      "methods": [
+        {
+          "name": "startTimer",
+          "signature": "static startTimer(callback: () => void, interval: number, loop?: number): number;",
+          "description": "启动一个定时器，执行指定的回调函数。",
+          "searchText": "startTimer \r\n启动一个定时器，执行指定的回调函数。"
+        },
+        {
+          "name": "stopTimer",
+          "signature": "static stopTimer(timerId: number): void;",
+          "description": "停止指定ID的计时器。",
+          "searchText": "stopTimer \r\n停止指定ID的计时器。"
+        },
+        {
+          "name": "pauseTimer",
+          "signature": "static pauseTimer(timerId: number): void;",
+          "description": "暂停指定ID的计时器。",
+          "searchText": "pauseTimer \r\n暂停指定ID的计时器。"
+        },
+        {
+          "name": "resumeTimer",
+          "signature": "static resumeTimer(timerId: number): void;",
+          "description": "恢复指定ID的计时器。",
+          "searchText": "resumeTimer \r\n恢复指定ID的计时器。"
+        },
+        {
+          "name": "clearAllTimer",
+          "signature": "static clearAllTimer(): void;",
+          "description": "清除所有定时器。",
+          "searchText": "clearAllTimer \r\n清除所有定时器。"
+        }
+      ],
+      "properties": [],
+      "searchText": "GlobalTimer  exia-core startTimer \r\n启动一个定时器，执行指定的回调函数。 stopTimer \r\n停止指定ID的计时器。 pauseTimer \r\n暂停指定ID的计时器。 resumeTimer \r\n恢复指定ID的计时器。 clearAllTimer \r\n清除所有定时器。 "
+    },
+    "InnerTimer": {
+      "name": "InnerTimer",
+      "module": "exia-core",
+      "description": "",
+      "methods": [
+        {
+          "name": "initTimer",
+          "signature": "static initTimer(): void;",
+          "description": "初始化全局定时器，设置定时器间隔为16毫秒。\r\n此方法用于启动一个定时器实例，以便在整个应用程序中跟踪时间相关的操作。",
+          "searchText": "initTimer \r\n初始化全局定时器，设置定时器间隔为16毫秒。\r\n此方法用于启动一个定时器实例，以便在整个应用程序中跟踪时间相关的操作。"
+        },
+        {
+          "name": "startTimer",
+          "signature": "static startTimer(callback: () => void, interval: number, loop?: number): number;",
+          "description": "",
+          "searchText": "startTimer "
+        },
+        {
+          "name": "stopTimer",
+          "signature": "static stopTimer(timerId: number): void;",
+          "description": "停止指定ID的计时器。",
+          "searchText": "stopTimer \r\n停止指定ID的计时器。"
+        },
+        {
+          "name": "update",
+          "signature": "static update(dt: number): void;",
+          "description": "",
+          "searchText": "update "
+        }
+      ],
+      "properties": [
+        {
+          "name": "_timer",
+          "type": "any",
+          "description": ""
+        }
+      ],
+      "searchText": "InnerTimer  exia-core initTimer \r\n初始化全局定时器，设置定时器间隔为16毫秒。\r\n此方法用于启动一个定时器实例，以便在整个应用程序中跟踪时间相关的操作。 startTimer  stopTimer \r\n停止指定ID的计时器。 update  _timer "
+    },
+    "HeapNode": {
+      "name": "HeapNode",
+      "module": "exia-core",
+      "description": "",
+      "methods": [
+        {
+          "name": "lessThan",
+          "signature": "abstract lessThan(other: HeapNode): boolean;",
+          "description": "",
+          "searchText": "lessThan "
+        }
+      ],
+      "properties": [
+        {
+          "name": "index",
+          "type": "number",
+          "description": ""
+        }
+      ],
+      "searchText": "HeapNode  exia-core lessThan  index "
+    },
+    "BinaryHeap": {
+      "name": "BinaryHeap",
+      "module": "exia-core",
+      "description": "",
+      "methods": [
+        {
+          "name": "clear",
+          "signature": "clear(): void;",
+          "description": "清空",
+          "searchText": "clear \r\n清空"
+        },
+        {
+          "name": "get",
+          "signature": "get(index: number): T;",
+          "description": "获取节点",
+          "searchText": "get \r\n获取节点"
+        },
+        {
+          "name": "top",
+          "signature": "top(): T;",
+          "description": "获取顶部节点",
+          "searchText": "top \r\n获取顶部节点"
+        },
+        {
+          "name": "contains",
+          "signature": "contains(node: T): boolean;",
+          "description": "是否包含节点",
+          "searchText": "contains \r\n是否包含节点"
+        },
+        {
+          "name": "push",
+          "signature": "push(node: T): void;",
+          "description": "Push节点",
+          "searchText": "push \r\nPush节点"
+        },
+        {
+          "name": "pop",
+          "signature": "pop(): T;",
+          "description": "Pop节点",
+          "searchText": "pop \r\nPop节点"
+        },
+        {
+          "name": "remove",
+          "signature": "remove(node: T): void;",
+          "description": "移除节点",
+          "searchText": "remove \r\n移除节点"
+        },
+        {
+          "name": "update",
+          "signature": "update(node: T): boolean;",
+          "description": "更新节点",
+          "searchText": "update \r\n更新节点"
+        }
+      ],
+      "properties": [],
+      "searchText": "BinaryHeap  exia-core clear \r\n清空 get \r\n获取节点 top \r\n获取顶部节点 contains \r\n是否包含节点 push \r\nPush节点 pop \r\nPop节点 remove \r\n移除节点 update \r\n更新节点 "
+    },
+    "LinkedNode": {
+      "name": "LinkedNode",
+      "module": "exia-core",
+      "description": "单链表结结构节点",
+      "methods": [],
+      "properties": [
+        {
+          "name": "element",
+          "type": "T",
+          "description": ""
+        },
+        {
+          "name": "next",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-core\").LinkedNode<T>",
+          "description": ""
+        }
+      ],
+      "searchText": "LinkedNode 单链表结结构节点 exia-core  element  next "
+    },
+    "DoublyNode": {
+      "name": "DoublyNode",
+      "module": "exia-core",
+      "description": "双向链表结结构节点",
+      "extends": "LinkedNode",
+      "methods": [],
+      "properties": [
+        {
+          "name": "prev",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-core\").DoublyNode<T>",
+          "description": ""
+        },
+        {
+          "name": "next",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-core\").DoublyNode<T>",
+          "description": ""
+        }
+      ],
+      "searchText": "DoublyNode 双向链表结结构节点 exia-core  prev  next "
+    },
+    "LinkedList": {
+      "name": "LinkedList",
+      "module": "exia-core",
+      "description": "单向链表",
+      "methods": [
+        {
+          "name": "push",
+          "signature": "push(element: T): void;",
+          "description": "向链表尾部添加元素",
+          "searchText": "push 向链表尾部添加元素"
+        },
+        {
+          "name": "insert",
+          "signature": "insert(element: T, index: number): boolean;",
+          "description": "在链表的指定位置插入一个元素。",
+          "searchText": "insert \r\n在链表的指定位置插入一个元素。"
+        },
+        {
+          "name": "getElementAt",
+          "signature": "getElementAt(index: number): LinkedNode<T>;",
+          "description": "获取链表中指定位置的元素，如果不存在返回 underfined",
+          "searchText": "getElementAt \r\n获取链表中指定位置的元素，如果不存在返回 underfined"
+        },
+        {
+          "name": "remove",
+          "signature": "remove(element: T): T;",
+          "description": "从链表中移除一个元素",
+          "searchText": "remove \r\n从链表中移除一个元素"
+        },
+        {
+          "name": "removeAt",
+          "signature": "removeAt(index: number): T;",
+          "description": "从链表的特定位置移除一个元素",
+          "searchText": "removeAt \r\n从链表的特定位置移除一个元素"
+        },
+        {
+          "name": "indexOf",
+          "signature": "indexOf(element: T): number;",
+          "description": "返回元素在链表中的索引，如果没有则返回-1",
+          "searchText": "indexOf \r\n返回元素在链表中的索引，如果没有则返回-1"
+        },
+        {
+          "name": "clear",
+          "signature": "clear(): void;",
+          "description": "",
+          "searchText": "clear "
+        },
+        {
+          "name": "getHead",
+          "signature": "getHead(): LinkedNode<T>;",
+          "description": "",
+          "searchText": "getHead "
+        },
+        {
+          "name": "isEmpty",
+          "signature": "isEmpty(): boolean;",
+          "description": "",
+          "searchText": "isEmpty "
+        },
+        {
+          "name": "size",
+          "signature": "size(): number;",
+          "description": "",
+          "searchText": "size "
+        },
+        {
+          "name": "toString",
+          "signature": "toString(): string;",
+          "description": "",
+          "searchText": "toString "
+        }
+      ],
+      "properties": [],
+      "searchText": "LinkedList 单向链表 exia-core push 向链表尾部添加元素 insert \r\n在链表的指定位置插入一个元素。 getElementAt \r\n获取链表中指定位置的元素，如果不存在返回 underfined remove \r\n从链表中移除一个元素 removeAt \r\n从链表的特定位置移除一个元素 indexOf \r\n返回元素在链表中的索引，如果没有则返回-1 clear  getHead  isEmpty  size  toString  "
+    },
+    "DoublyLinkedList": {
+      "name": "DoublyLinkedList",
+      "module": "exia-core",
+      "description": "双向链表",
+      "extends": "LinkedList",
+      "methods": [
+        {
+          "name": "push",
+          "signature": "push(element: T): void;",
+          "description": "向链表尾部添加元素",
+          "searchText": "push \r\n向链表尾部添加元素"
+        },
+        {
+          "name": "insert",
+          "signature": "insert(element: T, index: number): boolean;",
+          "description": "向链表指定位置添加元素",
+          "searchText": "insert \r\n向链表指定位置添加元素"
+        },
+        {
+          "name": "removeAt",
+          "signature": "removeAt(index: number): T;",
+          "description": "从链表的特定位置移除一个元素",
+          "searchText": "removeAt \r\n从链表的特定位置移除一个元素"
+        },
+        {
+          "name": "getElementAt",
+          "signature": "getElementAt(index: number): DoublyNode<T>;",
+          "description": "获取链表中指定位置的元素，如果不存在返回 null",
+          "searchText": "getElementAt \r\n获取链表中指定位置的元素，如果不存在返回 null"
+        },
+        {
+          "name": "getHead",
+          "signature": "getHead(): DoublyNode<T>;",
+          "description": "",
+          "searchText": "getHead "
+        },
+        {
+          "name": "getTail",
+          "signature": "getTail(): DoublyNode<T>;",
+          "description": "",
+          "searchText": "getTail "
+        },
+        {
+          "name": "clear",
+          "signature": "clear(): void;",
+          "description": "",
+          "searchText": "clear "
+        }
+      ],
+      "properties": [],
+      "searchText": "DoublyLinkedList 双向链表 exia-core push \r\n向链表尾部添加元素 insert \r\n向链表指定位置添加元素 removeAt \r\n从链表的特定位置移除一个元素 getElementAt \r\n获取链表中指定位置的元素，如果不存在返回 null getHead  getTail  clear  "
+    },
+    "Stack": {
+      "name": "Stack",
+      "module": "exia-core",
+      "description": "",
+      "methods": [
+        {
+          "name": "push",
+          "signature": "push(element: T): void;",
+          "description": "",
+          "searchText": "push "
+        },
+        {
+          "name": "pop",
+          "signature": "pop(): T;",
+          "description": "",
+          "searchText": "pop "
+        },
+        {
+          "name": "peek",
+          "signature": "peek(): T;",
+          "description": "",
+          "searchText": "peek "
+        },
+        {
+          "name": "size",
+          "signature": "size(): number;",
+          "description": "",
+          "searchText": "size "
+        },
+        {
+          "name": "isEmpty",
+          "signature": "isEmpty(): boolean;",
+          "description": "",
+          "searchText": "isEmpty "
+        },
+        {
+          "name": "clear",
+          "signature": "clear(): void;",
+          "description": "",
+          "searchText": "clear "
+        },
+        {
+          "name": "toString",
+          "signature": "toString(): string;",
+          "description": "",
+          "searchText": "toString "
+        }
+      ],
+      "properties": [],
+      "searchText": "Stack  exia-core push  pop  peek  size  isEmpty  clear  toString  "
+    },
+    "IPromiseResult": {
+      "name": "IPromiseResult",
+      "module": "exia-core",
+      "description": "",
+      "methods": [],
+      "properties": [
+        {
+          "name": "code",
+          "type": "number",
+          "description": "0:成功 其他:失败"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "description": "失败信息"
+        }
+      ],
+      "searchText": "IPromiseResult  exia-core  code 0:成功 其他:失败 message 失败信息"
+    },
+    "ICheckUpdatePromiseResult": {
+      "name": "ICheckUpdatePromiseResult",
+      "module": "exia-core",
+      "description": "",
+      "extends": "IPromiseResult",
+      "methods": [],
+      "properties": [
+        {
+          "name": "size",
+          "type": "number",
+          "description": "需要更新的资源大小 (KB)"
+        }
+      ],
+      "searchText": "ICheckUpdatePromiseResult  exia-core  size 需要更新的资源大小 (KB)"
+    },
+    "enableDebugMode": {
+      "name": "enableDebugMode",
+      "module": "exia-core",
+      "description": "启用或禁用调试模式。",
+      "kind": "function",
+      "signature": "declare function enableDebugMode(enable: boolean): void;",
+      "methods": [],
+      "properties": [],
+      "searchText": "enableDebugMode 启用或禁用调试模式。 exia-core"
+    },
+    "log": {
+      "name": "log",
+      "module": "exia-core",
+      "description": "",
+      "kind": "function",
+      "signature": "declare function log(...args: any[]): void;",
+      "methods": [],
+      "properties": [],
+      "searchText": "log  exia-core"
+    },
+    "debug": {
+      "name": "debug",
+      "module": "exia-core",
+      "description": "开启debug模式后 输出调试信息",
+      "kind": "function",
+      "signature": "declare function debug(...args: any[]): void;",
+      "methods": [],
+      "properties": [],
+      "searchText": "debug 开启debug模式后 输出调试信息 exia-core"
+    },
+    "info": {
+      "name": "info",
+      "module": "exia-core",
+      "description": "信息性消息 某些浏览器中会带有小图标，但颜色通常与 log 相同",
+      "kind": "function",
+      "signature": "declare function info(...args: any[]): void;",
+      "methods": [],
+      "properties": [],
+      "searchText": "info 信息性消息 某些浏览器中会带有小图标，但颜色通常与 log 相同 exia-core"
+    },
+    "warn": {
+      "name": "warn",
+      "module": "exia-core",
+      "description": "警告信息 黄色背景，通常带有警告图标",
+      "kind": "function",
+      "signature": "declare function warn(...args: any[]): void;",
+      "methods": [],
+      "properties": [],
+      "searchText": "warn 警告信息 黄色背景，通常带有警告图标 exia-core"
+    },
+    "error": {
+      "name": "error",
+      "module": "exia-core",
+      "description": "错误消息 红色背景，通常带有错误图标",
+      "kind": "function",
+      "signature": "declare function error(...args: any[]): void;",
+      "methods": [],
+      "properties": [],
+      "searchText": "error 错误消息 红色背景，通常带有错误图标 exia-core"
+    },
+    "md5": {
+      "name": "md5",
+      "module": "exia-core",
+      "description": "对字符串执行md5处理",
+      "kind": "function",
+      "signature": "declare function md5(message: string): string;",
+      "methods": [],
+      "properties": [],
+      "searchText": "md5 对字符串执行md5处理 exia-core"
+    },
+    "DataCompFormatUtil": {
+      "name": "DataCompFormatUtil",
+      "module": "exia-data",
+      "description": "该数据工具类 就是用来解决 服务器数据到游戏DataComp 格式上的统一\r\neg1:对于数组对象 可以转换为一个Map",
+      "methods": [
+        {
+          "name": "CloneObject",
+          "signature": "static CloneObject(target: Record<string, any>, source: Record<string, any>): void;",
+          "description": "对象进行赋值\r\n处理\r\n元对象\r\n{\r\n   k1:v1,\r\n   k2:v2\r\n}\r\n目标对象\r\n{\r\n   k1:v1,\r\n   k2:v2\r\n}",
+          "searchText": "CloneObject \r\n对象进行赋值\r\n处理\r\n元对象\r\n{\r\n   k1:v1,\r\n   k2:v2\r\n}\r\n目标对象\r\n{\r\n   k1:v1,\r\n   k2:v2\r\n}"
+        },
+        {
+          "name": "ArrayObject2Map",
+          "signature": "static ArrayObject2Map(source: any[], target1: any, target2: any): void;",
+          "description": "处理\r\n[\r\n   {k1:value,k2:[{k3:value,k4:value}]},\r\n   {k1:value,k2:[{k3:value,k4:value}]},\r\n]",
+          "searchText": "ArrayObject2Map \r\n处理\r\n[\r\n   {k1:value,k2:[{k3:value,k4:value}]},\r\n   {k1:value,k2:[{k3:value,k4:value}]},\r\n]"
+        },
+        {
+          "name": "ArrayObject2MapByKey",
+          "signature": "static ArrayObject2MapByKey(source: any[], target: any, key: any): void;",
+          "description": "处理\r\n[\r\n {k1:v1,K2:v2,...},\r\n ....\r\n]",
+          "searchText": "ArrayObject2MapByKey \r\n处理\r\n[\r\n {k1:v1,K2:v2,...},\r\n ....\r\n]"
+        },
+        {
+          "name": "ObjectByEnum2Map",
+          "signature": "static ObjectByEnum2Map(source: any, enums: any, target: any): void;",
+          "description": "处理对象数据根据枚举映射到Map中 注意枚举中的值应该跟对象值一一对应\r\n源数据\r\nsource:Object{\r\n aiActivityRankList: msg_ai_activity.Iai_activity_base[];\r\n aiActivityLimitRechargeList: msg_ai_activity.Iai_activity_base[];\r\n aiActivityLimitGiftList: msg_ai_activity.Iai_activity_base[];\r\n ........\r\n}\r\n\r\n处理过程：\r\n交给数据自己处理吧\r\n\r\n目标数据\r\ntarget:Map<k:v>={\r\n k:enum(type)---->v:aiActivityRankList\r\n ......\r\n}",
+          "searchText": "ObjectByEnum2Map \r\n处理对象数据根据枚举映射到Map中 注意枚举中的值应该跟对象值一一对应\r\n源数据\r\nsource:Object{\r\n aiActivityRankList: msg_ai_activity.Iai_activity_base[];\r\n aiActivityLimitRechargeList: msg_ai_activity.Iai_activity_base[];\r\n aiActivityLimitGiftList: msg_ai_activity.Iai_activity_base[];\r\n ........\r\n}\r\n\r\n处理过程：\r\n交给数据自己处理吧\r\n\r\n目标数据\r\ntarget:Map<k:v>={\r\n k:enum(type)---->v:aiActivityRankList\r\n ......\r\n}"
+        },
+        {
+          "name": "StrToArray",
+          "signature": "static StrToArray(str: string, frist?: string, second?: string): string[][];",
+          "description": "处理功能开放数据格式",
+          "searchText": "StrToArray \r\n处理功能开放数据格式"
+        }
+      ],
+      "properties": [],
+      "searchText": "DataCompFormatUtil 该数据工具类 就是用来解决 服务器数据到游戏DataComp 格式上的统一\r\neg1:对于数组对象 可以转换为一个Map exia-data CloneObject \r\n对象进行赋值\r\n处理\r\n元对象\r\n{\r\n   k1:v1,\r\n   k2:v2\r\n}\r\n目标对象\r\n{\r\n   k1:v1,\r\n   k2:v2\r\n} ArrayObject2Map \r\n处理\r\n[\r\n   {k1:value,k2:[{k3:value,k4:value}]},\r\n   {k1:value,k2:[{k3:value,k4:value}]},\r\n] ArrayObject2MapByKey \r\n处理\r\n[\r\n {k1:v1,K2:v2,...},\r\n ....\r\n] ObjectByEnum2Map \r\n处理对象数据根据枚举映射到Map中 注意枚举中的值应该跟对象值一一对应\r\n源数据\r\nsource:Object{\r\n aiActivityRankList: msg_ai_activity.Iai_activity_base[];\r\n aiActivityLimitRechargeList: msg_ai_activity.Iai_activity_base[];\r\n aiActivityLimitGiftList: msg_ai_activity.Iai_activity_base[];\r\n ........\r\n}\r\n\r\n处理过程：\r\n交给数据自己处理吧\r\n\r\n目标数据\r\ntarget:Map<k:v>={\r\n k:enum(type)---->v:aiActivityRankList\r\n ......\r\n} StrToArray \r\n处理功能开放数据格式 "
+    },
+    "DataSys": {
+      "name": "DataSys",
+      "module": "exia-data",
+      "description": "",
+      "methods": [
+        {
+          "name": "GetDataSys",
+          "signature": "static GetDataSys(): DataSys;",
+          "description": "",
+          "searchText": "GetDataSys "
+        },
+        {
+          "name": "Clear",
+          "signature": "Clear(): void;",
+          "description": "清除 / 重置所有数据及订阅状态",
+          "searchText": "Clear 清除 / 重置所有数据及订阅状态"
+        },
+        {
+          "name": "Get",
+          "signature": "static Get<T>(ctor: new () => T): T;",
+          "description": "获取 DataComp 或 DataWatcher 实例。\r\n传入什么类型就返回什么类型。",
+          "searchText": "Get \r\n获取 DataComp 或 DataWatcher 实例。\r\n传入什么类型就返回什么类型。\r\n"
+        },
+        {
+          "name": "RegisterWatcher",
+          "signature": "RegisterWatcher<T>(ctor: new () => T): T;",
+          "description": "注册 DataWatcher（含其持有的所有 DataComp）。\r\nDataComp 实例会被 Proxy 包裹，属性赋值自动标脏。",
+          "searchText": "RegisterWatcher \r\n注册 DataWatcher（含其持有的所有 DataComp）。\r\nDataComp 实例会被 Proxy 包裹，属性赋值自动标脏。"
+        },
+        {
+          "name": "UninstallWatcher",
+          "signature": "UninstallWatcher(ctor: Function): void;",
+          "description": "卸载 DataWatcher（含清理其持有的 DataComp 引用及订阅）",
+          "searchText": "UninstallWatcher \r\n卸载 DataWatcher（含清理其持有的 DataComp 引用及订阅）"
+        },
+        {
+          "name": "UpdateDataComp",
+          "signature": "UpdateDataComp(ctor: DataCompConstructor, source: object): void;",
+          "description": "用服务器数据批量更新 DataComp（浅拷贝）。\r\n因为目标是 Proxy，CloneObject 内部的赋值会自动触发标脏。",
+          "searchText": "UpdateDataComp \r\n用服务器数据批量更新 DataComp（浅拷贝）。\r\n因为目标是 Proxy，CloneObject 内部的赋值会自动触发标脏。"
+        },
+        {
+          "name": "Watch",
+          "signature": "static Watch<T>(ctor: new () => T, callback: (comp: T) => void, target?: any): void;",
+          "description": "订阅 DataComp 变更通知。\r\ncallback 在每次 AutoWatcher flush 时收到最新的 DataComp 实例。",
+          "searchText": "Watch \r\n订阅 DataComp 变更通知。\r\ncallback 在每次 AutoWatcher flush 时收到最新的 DataComp 实例。\r\n"
+        },
+        {
+          "name": "Unwatch",
+          "signature": "static Unwatch<T>(ctor: new () => T, callback: (comp: T) => void): void;",
+          "description": "取消订阅指定回调。",
+          "searchText": "Unwatch \r\n取消订阅指定回调。\r\n"
+        },
+        {
+          "name": "UnwatchByTarget",
+          "signature": "static UnwatchByTarget(target: any): void;",
+          "description": "批量取消某个 target 对象绑定的所有订阅。\r\n适合在 UI 组件 onClose / onDestroy 时统一卸载：",
+          "searchText": "UnwatchByTarget \r\n批量取消某个 target 对象绑定的所有订阅。\r\n适合在 UI 组件 onClose / onDestroy 时统一卸载：\r\n"
+        },
+        {
+          "name": "NotifyChanged",
+          "signature": "static NotifyChanged<T>(ctor: new () => T): void;",
+          "description": "手动标记 DataComp 为脏（用于 Map / Array 深层变更）。\r\nProxy 只拦截顶层属性赋值，Map.set() / Array.push() 等集合操作\r\n不会被自动捕获，需在操作后手动调用此方法。",
+          "searchText": "NotifyChanged \r\n手动标记 DataComp 为脏（用于 Map / Array 深层变更）。\r\nProxy 只拦截顶层属性赋值，Map.set() / Array.push() 等集合操作\r\n不会被自动捕获，需在操作后手动调用此方法。\r\n"
+        },
+        {
+          "name": "AutoWatcher",
+          "signature": "AutoWatcher(): void;",
+          "description": "自观察 flush 方法。\r\n\r\n流程：\r\n  数据观察者 → 检测到数据改变（Proxy 标脏 / NotifyChanged）\r\n    → 修改数据 → 通知各 DataComp 订阅者\r\n    → 业务逻辑若调用了 UpdateDataComp（回源）则再次标脏\r\n    → while 循环继续 flush，直至无脏或超出 MAX_FLUSH_DEPTH\r\n\r\n调用时机：\r\n  - 协议批处理完成后手动调用（推荐）：DataSys.GetDataSys().AutoWatcher()\r\n  - 或在游戏帧更新（Update）中每帧调用，实现全自动响应",
+          "searchText": "AutoWatcher \r\n自观察 flush 方法。\r\n\r\n流程：\r\n  数据观察者 → 检测到数据改变（Proxy 标脏 / NotifyChanged）\r\n    → 修改数据 → 通知各 DataComp 订阅者\r\n    → 业务逻辑若调用了 UpdateDataComp（回源）则再次标脏\r\n    → while 循环继续 flush，直至无脏或超出 MAX_FLUSH_DEPTH\r\n\r\n调用时机：\r\n  - 协议批处理完成后手动调用（推荐）：DataSys.GetDataSys().AutoWatcher()\r\n  - 或在游戏帧更新（Update）中每帧调用，实现全自动响应"
+        }
+      ],
+      "properties": [
+        {
+          "name": "_instance",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_recordDataComp",
+          "type": "any",
+          "description": "compType string → DataComp Proxy 实例"
+        },
+        {
+          "name": "_subscribers",
+          "type": "any",
+          "description": "compType string → 订阅回调集合"
+        },
+        {
+          "name": "_dirtySet",
+          "type": "any",
+          "description": "待通知的脏 compType 集合（Set 自动去重）"
+        },
+        {
+          "name": "_flushing",
+          "type": "any",
+          "description": "flush 正在执行，防止同一轮重入"
+        },
+        {
+          "name": "_flushDepth",
+          "type": "any",
+          "description": "当前 flush 深度，超过上限视为无限反馈，强制终止"
+        },
+        {
+          "name": "MAX_FLUSH_DEPTH",
+          "type": "any",
+          "description": "最大回源深度（每一轮 flush 后业务回源再次标脏算一层）"
+        },
+        {
+          "name": "_createObservable",
+          "type": "any",
+          "description": "用 Proxy 包裹 DataComp 实例。\r\n拦截顶层属性的 set 操作，将 compType 写入 _dirtySet。\r\n注意：Proxy 只感知浅层赋值，Map / Array 内部变更需手动 NotifyChanged。"
+        },
+        {
+          "name": "_markDirty",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_addSubscriber",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_removeSubscriber",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_getWatcher",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_getDataComp",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_clearDataComp",
+          "type": "any",
+          "description": ""
+        }
+      ],
+      "searchText": "DataSys  exia-data GetDataSys  Clear 清除 / 重置所有数据及订阅状态 Get \r\n获取 DataComp 或 DataWatcher 实例。\r\n传入什么类型就返回什么类型。\r\n RegisterWatcher \r\n注册 DataWatcher（含其持有的所有 DataComp）。\r\nDataComp 实例会被 Proxy 包裹，属性赋值自动标脏。 UninstallWatcher \r\n卸载 DataWatcher（含清理其持有的 DataComp 引用及订阅） UpdateDataComp \r\n用服务器数据批量更新 DataComp（浅拷贝）。\r\n因为目标是 Proxy，CloneObject 内部的赋值会自动触发标脏。 Watch \r\n订阅 DataComp 变更通知。\r\ncallback 在每次 AutoWatcher flush 时收到最新的 DataComp 实例。\r\n Unwatch \r\n取消订阅指定回调。\r\n UnwatchByTarget \r\n批量取消某个 target 对象绑定的所有订阅。\r\n适合在 UI 组件 onClose / onDestroy 时统一卸载：\r\n NotifyChanged \r\n手动标记 DataComp 为脏（用于 Map / Array 深层变更）。\r\nProxy 只拦截顶层属性赋值，Map.set() / Array.push() 等集合操作\r\n不会被自动捕获，需在操作后手动调用此方法。\r\n AutoWatcher \r\n自观察 flush 方法。\r\n\r\n流程：\r\n  数据观察者 → 检测到数据改变（Proxy 标脏 / NotifyChanged）\r\n    → 修改数据 → 通知各 DataComp 订阅者\r\n    → 业务逻辑若调用了 UpdateDataComp（回源）则再次标脏\r\n    → while 循环继续 flush，直至无脏或超出 MAX_FLUSH_DEPTH\r\n\r\n调用时机：\r\n  - 协议批处理完成后手动调用（推荐）：DataSys.GetDataSys().AutoWatcher()\r\n  - 或在游戏帧更新（Update）中每帧调用，实现全自动响应 _instance  _recordDataComp compType string → DataComp Proxy 实例 _subscribers compType string → 订阅回调集合 _dirtySet 待通知的脏 compType 集合（Set 自动去重） _flushing flush 正在执行，防止同一轮重入 _flushDepth 当前 flush 深度，超过上限视为无限反馈，强制终止 MAX_FLUSH_DEPTH 最大回源深度（每一轮 flush 后业务回源再次标脏算一层） _createObservable 用 Proxy 包裹 DataComp 实例。\r\n拦截顶层属性的 set 操作，将 compType 写入 _dirtySet。\r\n注意：Proxy 只感知浅层赋值，Map / Array 内部变更需手动 NotifyChanged。 _markDirty  _addSubscriber  _removeSubscriber  _getWatcher  _getDataComp  _clearDataComp "
+    },
+    "dataComp": {
+      "name": "dataComp",
+      "module": "exia-data",
+      "description": "数据组件装饰器\r\n将类注册为指定 DataCompType 的数据组件。\r\n同时在构造函数上写入 DataMetadataKey.compType 静态属性（防混淆）。",
+      "kind": "function",
+      "signature": "function dataComp(type: DataCompType): ClassDecorator;",
+      "methods": [],
+      "properties": [],
+      "searchText": "dataComp 数据组件装饰器\r\n将类注册为指定 DataCompType 的数据组件。\r\n同时在构造函数上写入 DataMetadataKey.compType 静态属性（防混淆）。 exia-data"
+    },
+    "dataWatcher": {
+      "name": "dataWatcher",
+      "module": "exia-data",
+      "description": "数据观察者装饰器\r\n将类标记为 DataWatcher，并声明它持有哪些 DataComp。\r\n持有的 DataComp 实例会以 compType 为 key 挂载到 watcher 原型上，\r\nDataSys.RegisterWatcher 时统一实例化并纳入 _recordDataComp。",
+      "kind": "function",
+      "signature": "function dataWatcher(...comps: DataCompConstructor[]): ClassDecorator;",
+      "methods": [],
+      "properties": [],
+      "searchText": "dataWatcher 数据观察者装饰器\r\n将类标记为 DataWatcher，并声明它持有哪些 DataComp。\r\n持有的 DataComp 实例会以 compType 为 key 挂载到 watcher 原型上，\r\nDataSys.RegisterWatcher 时统一实例化并纳入 _recordDataComp。 exia-data"
+    },
+    "dataCompDependency": {
+      "name": "dataCompDependency",
+      "module": "exia-data",
+      "description": "DataComp 前置注入装饰器（方法级）\r\n\r\n调用被装饰的方法时，自动将指定 DataComp 实例作为方法的**前几个参数**注入。\r\n方法签名中，注入参数写在最前面，手动传入的业务参数写在后面。\r\n调用方只需传业务参数，注入参数由装饰器自动填充。",
+      "kind": "function",
+      "signature": "function dataCompDependency(comps: DataCompConstructor[]): MethodDecorator;",
+      "methods": [],
+      "properties": [],
+      "searchText": "dataCompDependency DataComp 前置注入装饰器（方法级）\r\n\r\n调用被装饰的方法时，自动将指定 DataComp 实例作为方法的**前几个参数**注入。\r\n方法签名中，注入参数写在最前面，手动传入的业务参数写在后面。\r\n调用方只需传业务参数，注入参数由装饰器自动填充。 exia-data"
+    },
+    "EventManager": {
+      "name": "EventManager",
+      "module": "exia-event",
+      "description": "事件管理器 - 防止递归调用栈溢出\r\n\r\n功能特性：\r\n- 递归深度限制防止栈溢出\r\n- 完全向后兼容现有API",
+      "methods": [
+        {
+          "name": "add",
+          "signature": "add(name: string, callback: (...args: any[]) => void, target?: any): number;",
+          "description": "添加事件监听器",
+          "searchText": "add \r\n添加事件监听器"
+        },
+        {
+          "name": "addOnce",
+          "signature": "addOnce(name: string, callback: (...args: any[]) => void, target?: any): number;",
+          "description": "添加一个只触发一次的事件监听器",
+          "searchText": "addOnce \r\n添加一个只触发一次的事件监听器"
+        },
+        {
+          "name": "send",
+          "signature": "send(name: string, target?: any, ...args: any[]): void;",
+          "description": "发送事件给所有注册的监听器（带递归保护）",
+          "searchText": "send \r\n发送事件给所有注册的监听器（带递归保护）"
+        },
+        {
+          "name": "remove",
+          "signature": "remove(eventId: number): void;",
+          "description": "通过事件ID移除事件",
+          "searchText": "remove \r\n通过事件ID移除事件"
+        },
+        {
+          "name": "removeByName",
+          "signature": "removeByName(name: string): void;",
+          "description": "移除指定名称的所有事件",
+          "searchText": "removeByName \r\n移除指定名称的所有事件"
+        },
+        {
+          "name": "removeByTarget",
+          "signature": "removeByTarget(target: any): void;",
+          "description": "移除指定目标的所有事件",
+          "searchText": "removeByTarget \r\n移除指定目标的所有事件"
+        },
+        {
+          "name": "removeByNameAndTarget",
+          "signature": "removeByNameAndTarget(name: string, target: any): void;",
+          "description": "移除指定名称和指定目标的事件",
+          "searchText": "removeByNameAndTarget \r\n移除指定名称和指定目标的事件"
+        },
+        {
+          "name": "clearAll",
+          "signature": "clearAll(): void;",
+          "description": "清空所有注册的事件",
+          "searchText": "clearAll \r\n清空所有注册的事件"
+        }
+      ],
+      "properties": [],
+      "searchText": "EventManager 事件管理器 - 防止递归调用栈溢出\r\n\r\n功能特性：\r\n- 递归深度限制防止栈溢出\r\n- 完全向后兼容现有API exia-event add \r\n添加事件监听器 addOnce \r\n添加一个只触发一次的事件监听器 send \r\n发送事件给所有注册的监听器（带递归保护） remove \r\n通过事件ID移除事件 removeByName \r\n移除指定名称的所有事件 removeByTarget \r\n移除指定目标的所有事件 removeByNameAndTarget \r\n移除指定名称和指定目标的事件 clearAll \r\n清空所有注册的事件 "
+    },
+    "GlobalEvent": {
+      "name": "GlobalEvent",
+      "module": "exia-event",
+      "description": "",
+      "methods": [
+        {
+          "name": "add",
+          "signature": "static add(name: string, callback: (...args: any[]) => void, target?: any): number;",
+          "description": "添加一个事件",
+          "searchText": "add \r\n添加一个事件"
+        },
+        {
+          "name": "addOnce",
+          "signature": "static addOnce(name: string, callback: (...args: any[]) => void, target?: any): number;",
+          "description": "添加一个只触发一次的事件",
+          "searchText": "addOnce \r\n添加一个只触发一次的事件"
+        },
+        {
+          "name": "send",
+          "signature": "static send(name: string, ...args: any[]): void;",
+          "description": "发送一个事件",
+          "searchText": "send \r\n发送一个事件"
+        },
+        {
+          "name": "sendToTarget",
+          "signature": "static sendToTarget(name: string, target: any, ...args: any[]): void;",
+          "description": "发送一个事件给指定目标",
+          "searchText": "sendToTarget \r\n发送一个事件给指定目标"
+        },
+        {
+          "name": "remove",
+          "signature": "static remove(eventId: number): void;",
+          "description": "移除一个指定ID的事件",
+          "searchText": "remove \r\n移除一个指定ID的事件"
+        },
+        {
+          "name": "removeByName",
+          "signature": "static removeByName(name: string): void;",
+          "description": "",
+          "searchText": "removeByName "
+        },
+        {
+          "name": "removeByTarget",
+          "signature": "static removeByTarget(target: any): void;",
+          "description": "",
+          "searchText": "removeByTarget "
+        },
+        {
+          "name": "removeByNameAndTarget",
+          "signature": "static removeByNameAndTarget(name: string, target: any): void;",
+          "description": "通过目标和事件名称批量移除事件",
+          "searchText": "removeByNameAndTarget \r\n通过目标和事件名称批量移除事件"
+        },
+        {
+          "name": "clearAll",
+          "signature": "static clearAll(): void;",
+          "description": "清空所有事件",
+          "searchText": "clearAll \r\n清空所有事件"
+        }
+      ],
+      "properties": [],
+      "searchText": "GlobalEvent  exia-event add \r\n添加一个事件 addOnce \r\n添加一个只触发一次的事件 send \r\n发送一个事件 sendToTarget \r\n发送一个事件给指定目标 remove \r\n移除一个指定ID的事件 removeByName  removeByTarget  removeByNameAndTarget \r\n通过目标和事件名称批量移除事件 clearAll \r\n清空所有事件 "
+    },
+    "HttpRequest": {
+      "name": "HttpRequest",
+      "module": "exia-net",
+      "description": "",
+      "methods": [
+        {
+          "name": "setNetCallback",
+          "signature": "setNetCallback(callback: (result: \"succeed\" | \"fail\", response: IHttpResponse) => void): void;",
+          "description": "",
+          "searchText": "setNetCallback "
+        },
+        {
+          "name": "send",
+          "signature": "send(url: string, data: any, headers: any[]): void;",
+          "description": "",
+          "searchText": "send "
+        },
+        {
+          "name": "abort",
+          "signature": "abort(silent?: boolean): void;",
+          "description": "终止Http请求",
+          "searchText": "abort \r\n终止Http请求"
+        }
+      ],
+      "properties": [
+        {
+          "name": "method",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-net\").HttpRequestMethod",
+          "description": "请求方法"
+        },
+        {
+          "name": "timeout",
+          "type": "number",
+          "description": "请求超时时间 (s)"
+        },
+        {
+          "name": "responseType",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-net\").HttpResponseType",
+          "description": "响应类型"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "description": "信息"
+        },
+        {
+          "name": "data",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-net\").HttpResponseDataType",
+          "description": "响应数据"
+        }
+      ],
+      "searchText": "HttpRequest  exia-net setNetCallback  send  abort \r\n终止Http请求 method 请求方法 timeout 请求超时时间 (s) responseType 响应类型 message 信息 data 响应数据"
+    },
+    "HttpManager": {
+      "name": "HttpManager",
+      "module": "exia-net",
+      "description": "",
+      "methods": [
+        {
+          "name": "post",
+          "signature": "static post(url: string, data: any, responseType: HttpResponseType, netEvent: IHttpEvent, headers?: any[], timeout?: number): HttpRequest;",
+          "description": "发送post请求",
+          "searchText": "post \r\n发送post请求"
+        },
+        {
+          "name": "get",
+          "signature": "static get(url: string, data: any, responseType: HttpResponseType, netEvent: IHttpEvent, headers?: any[], timeout?: number): HttpRequest;",
+          "description": "发送get请求",
+          "searchText": "get \r\n发送get请求"
+        },
+        {
+          "name": "put",
+          "signature": "static put(url: string, data: any, responseType: HttpResponseType, netEvent: IHttpEvent, headers?: any[], timeout?: number): HttpRequest;",
+          "description": "发送put请求",
+          "searchText": "put \r\n发送put请求"
+        },
+        {
+          "name": "head",
+          "signature": "static head(url: string, data: any, responseType: HttpResponseType, netEvent: IHttpEvent, headers?: any[], timeout?: number): HttpRequest;",
+          "description": "发送head请求",
+          "searchText": "head \r\n发送head请求"
+        }
+      ],
+      "properties": [
+        {
+          "name": "HttpEvent",
+          "type": "string",
+          "description": ""
+        }
+      ],
+      "searchText": "HttpManager  exia-net post \r\n发送post请求 get \r\n发送get请求 put \r\n发送put请求 head \r\n发送head请求 HttpEvent "
+    },
+    "HttpTask": {
+      "name": "HttpTask",
+      "module": "exia-net",
+      "description": "",
+      "methods": [
+        {
+          "name": "onComplete",
+          "signature": "abstract onComplete(response: IHttpResponse): void;",
+          "description": "请求完成",
+          "searchText": "onComplete 请求完成"
+        },
+        {
+          "name": "onError",
+          "signature": "abstract onError(response: IHttpResponse): void;",
+          "description": "请求错误",
+          "searchText": "onError 请求错误"
+        },
+        {
+          "name": "start",
+          "signature": "abstract start(): void;",
+          "description": "请求开始",
+          "searchText": "start 请求开始"
+        }
+      ],
+      "properties": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "名称"
+        },
+        {
+          "name": "data",
+          "type": "any",
+          "description": "自定义参数"
+        }
+      ],
+      "searchText": "HttpTask  exia-net onComplete 请求完成 onError 请求错误 start 请求开始 name 名称 data 自定义参数"
+    },
+    "Socket": {
+      "name": "Socket",
+      "module": "exia-net",
+      "description": "",
+      "methods": [
+        {
+          "name": "send",
+          "signature": "send(data: string): void;",
+          "description": "发送文本数据",
+          "searchText": "send \r\n发送文本数据"
+        },
+        {
+          "name": "sendBuffer",
+          "signature": "sendBuffer(data: ArrayBuffer): void;",
+          "description": "发送二进制数据",
+          "searchText": "sendBuffer \r\n发送二进制数据"
+        },
+        {
+          "name": "close",
+          "signature": "close(code?: number, reason?: string): void;",
+          "description": "客户端主动断开",
+          "searchText": "close \r\n客户端主动断开"
+        },
+        {
+          "name": "socket",
+          "signature": "socket<T>(): T;",
+          "description": "获取socket示例\r\n在微信小游戏、支付宝小游戏、抖音小游戏 返回的是他们平台的socket实例类型",
+          "searchText": "socket \r\n获取socket示例\r\n在微信小游戏、支付宝小游戏、抖音小游戏 返回的是他们平台的socket实例类型"
+        }
+      ],
+      "properties": [
+        {
+          "name": "onopen",
+          "type": "() => void",
+          "description": "socket已准备好 open成功\r\n当前连接已经准备好发送和接受数据"
+        },
+        {
+          "name": "onmessage",
+          "type": "(data: string | ArrayBuffer) => void",
+          "description": "接收到服务端发送的消息"
+        },
+        {
+          "name": "onerror",
+          "type": "() => void",
+          "description": "监听可能发生的错误，一般用不到"
+        },
+        {
+          "name": "onclose",
+          "type": "(code: number, reason: string) => void",
+          "description": "关闭连接"
+        }
+      ],
+      "searchText": "Socket  exia-net send \r\n发送文本数据 sendBuffer \r\n发送二进制数据 close \r\n客户端主动断开 socket \r\n获取socket示例\r\n在微信小游戏、支付宝小游戏、抖音小游戏 返回的是他们平台的socket实例类型 onopen socket已准备好 open成功\r\n当前连接已经准备好发送和接受数据 onmessage 接收到服务端发送的消息 onerror 监听可能发生的错误，一般用不到 onclose 关闭连接"
+    },
+    "Ws": {
+      "name": "Ws",
+      "module": "exia-net",
+      "description": "WebSocket类，实现ISocket接口",
+      "methods": [
+        {
+          "name": "onConnected",
+          "signature": "onConnected(): void;",
+          "description": "连接成功时的回调",
+          "searchText": "onConnected 连接成功时的回调"
+        },
+        {
+          "name": "onMessage",
+          "signature": "onMessage(msg: WsData): void;",
+          "description": "收到消息时的回调",
+          "searchText": "onMessage 收到消息时的回调"
+        },
+        {
+          "name": "onError",
+          "signature": "onError(err: any): void;",
+          "description": "错误处理回调",
+          "searchText": "onError 错误处理回调"
+        },
+        {
+          "name": "onClosed",
+          "signature": "onClosed(): void;",
+          "description": "连接关闭时的回调",
+          "searchText": "onClosed 连接关闭时的回调"
+        },
+        {
+          "name": "connect",
+          "signature": "connect(urlOrIp: string, port?: number): boolean;",
+          "description": "连接到WebSocket服务器",
+          "searchText": "connect \r\n连接到WebSocket服务器"
+        },
+        {
+          "name": "send",
+          "signature": "send(data: WsData): boolean;",
+          "description": "发送数据",
+          "searchText": "send \r\n发送数据"
+        },
+        {
+          "name": "sendBuffer",
+          "signature": "sendBuffer(cmd: number, buffer: Uint8Array, key?: string): boolean;",
+          "description": "发送命令和数据",
+          "searchText": "sendBuffer \r\n发送命令和数据"
+        },
+        {
+          "name": "close",
+          "signature": "close(code?: number, reason?: string): void;",
+          "description": "关闭WebSocket连接",
+          "searchText": "close \r\n关闭WebSocket连接"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ws",
+          "type": "any",
+          "description": ""
+        }
+      ],
+      "searchText": "Ws WebSocket类，实现ISocket接口 exia-net onConnected 连接成功时的回调 onMessage 收到消息时的回调 onError 错误处理回调 onClosed 连接关闭时的回调 connect \r\n连接到WebSocket服务器 send \r\n发送数据 sendBuffer \r\n发送命令和数据 close \r\n关闭WebSocket连接 ws "
+    },
+    "Message": {
+      "name": "Message",
+      "module": "exia-net",
+      "description": "消息结构",
+      "methods": [],
+      "properties": [
+        {
+          "name": "Cmd",
+          "type": "number",
+          "description": ""
+        },
+        {
+          "name": "Data",
+          "type": "Uint8Array<ArrayBufferLike>",
+          "description": ""
+        }
+      ],
+      "searchText": "Message 消息结构 exia-net  Cmd  Data "
+    },
+    "WsPacker": {
+      "name": "WsPacker",
+      "module": "exia-net",
+      "description": "消息编码器，提供WebSocket消息的编码加密和解码解密功能",
+      "methods": [
+        {
+          "name": "Pack",
+          "signature": "static Pack(msg: Message, key?: string): Uint8Array;",
+          "description": "消息打包（使用大端序）",
+          "searchText": "Pack \r\n消息打包（使用大端序）"
+        },
+        {
+          "name": "Unpack",
+          "signature": "static Unpack(buffer: Uint8Array, key?: string): Message;",
+          "description": "消息解包（使用大端序）",
+          "searchText": "Unpack \r\n消息解包（使用大端序）"
+        }
+      ],
+      "properties": [
+        {
+          "name": "setUint32",
+          "type": "any",
+          "description": "通过 DataView 设置 Uint32 值（大端序）"
+        },
+        {
+          "name": "getUint32",
+          "type": "any",
+          "description": "通过 DataView 获取 Uint32 值（大端序）"
+        }
+      ],
+      "searchText": "WsPacker 消息编码器，提供WebSocket消息的编码加密和解码解密功能 exia-net Pack \r\n消息打包（使用大端序） Unpack \r\n消息解包（使用大端序） setUint32 通过 DataView 设置 Uint32 值（大端序） getUint32 通过 DataView 获取 Uint32 值（大端序）"
+    },
+    "ReadNetFile": {
+      "name": "ReadNetFile",
+      "module": "exia-net",
+      "description": "",
+      "methods": [],
+      "properties": [],
+      "searchText": "ReadNetFile  exia-net  "
+    },
+    "Crypto": {
+      "name": "Crypto",
+      "module": "exia-net",
+      "description": "",
+      "methods": [
+        {
+          "name": "strEncrypt",
+          "signature": "static strEncrypt(plainText: string, key: string): string;",
+          "description": "文本加密函数",
+          "searchText": "strEncrypt \r\n文本加密函数"
+        },
+        {
+          "name": "strDecrypt",
+          "signature": "static strDecrypt(cipherText: string, key: string): string;",
+          "description": "文本解密函数",
+          "searchText": "strDecrypt \r\n文本解密函数"
+        },
+        {
+          "name": "byteEncrypt",
+          "signature": "static byteEncrypt(data: Uint8Array, key: string): Uint8Array;",
+          "description": "二进制数据加密函数",
+          "searchText": "byteEncrypt \r\n二进制数据加密函数"
+        },
+        {
+          "name": "byteDecrypt",
+          "signature": "static byteDecrypt(data: Uint8Array, key: string): Uint8Array;",
+          "description": "二进制数据解密函数",
+          "searchText": "byteDecrypt \r\n二进制数据解密函数"
+        },
+        {
+          "name": "aesEncrypt",
+          "signature": "static aesEncrypt(msg: string, key: string, iv: string): string;",
+          "description": "AES 加密",
+          "searchText": "aesEncrypt \r\nAES 加密"
+        },
+        {
+          "name": "aesDecrypt",
+          "signature": "static aesDecrypt(str: string, key: string, iv: string): string;",
+          "description": "AES 解密",
+          "searchText": "aesDecrypt \r\nAES 解密"
+        },
+        {
+          "name": "md5",
+          "signature": "static md5(data: string): string;",
+          "description": "md5加密方法",
+          "searchText": "md5 \r\nmd5加密方法"
+        },
+        {
+          "name": "md5Sign",
+          "signature": "static md5Sign(data: string, key: string): string;",
+          "description": "md5签名方法",
+          "searchText": "md5Sign \r\nmd5签名方法"
+        }
+      ],
+      "properties": [
+        {
+          "name": "utf8Parse",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "generateRandomIV",
+          "type": "any",
+          "description": "生成随机 IV"
+        },
+        {
+          "name": "getKeyString",
+          "type": "any",
+          "description": "获取加密密钥的WordArray格式"
+        },
+        {
+          "name": "wordArrayToUint8Array",
+          "type": "any",
+          "description": "将WordArray转换为Uint8Array"
+        },
+        {
+          "name": "uint8ArrayToWordArray",
+          "type": "any",
+          "description": "将Uint8Array转换为WordArray"
+        }
+      ],
+      "searchText": "Crypto  exia-net strEncrypt \r\n文本加密函数 strDecrypt \r\n文本解密函数 byteEncrypt \r\n二进制数据加密函数 byteDecrypt \r\n二进制数据解密函数 aesEncrypt \r\nAES 加密 aesDecrypt \r\nAES 解密 md5 \r\nmd5加密方法 md5Sign \r\nmd5签名方法 utf8Parse  generateRandomIV 生成随机 IV getKeyString 获取加密密钥的WordArray格式 wordArrayToUint8Array 将WordArray转换为Uint8Array uint8ArrayToWordArray 将Uint8Array转换为WordArray"
+    },
+    "IHttpRequest": {
+      "name": "IHttpRequest",
+      "module": "exia-net",
+      "description": "",
+      "methods": [],
+      "properties": [
+        {
+          "name": "method",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-net\").HttpRequestMethod",
+          "description": "请求方法"
+        },
+        {
+          "name": "timeout",
+          "type": "number",
+          "description": "请求超时时间 (s)"
+        },
+        {
+          "name": "responseType",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-net\").HttpResponseType",
+          "description": "响应类型"
+        }
+      ],
+      "searchText": "IHttpRequest  exia-net  method 请求方法 timeout 请求超时时间 (s) responseType 响应类型"
+    },
+    "IHttpResponse": {
+      "name": "IHttpResponse",
+      "module": "exia-net",
+      "description": "",
+      "methods": [],
+      "properties": [
+        {
+          "name": "message",
+          "type": "string",
+          "description": "信息"
+        },
+        {
+          "name": "data",
+          "type": "import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-net\").HttpResponseDataType",
+          "description": "响应数据"
+        },
+        {
+          "name": "statusCode",
+          "type": "number",
+          "description": "http状态码"
+        },
+        {
+          "name": "headers",
+          "type": "any",
+          "description": "相应头"
+        }
+      ],
+      "searchText": "IHttpResponse  exia-net  message 信息 data 响应数据 statusCode http状态码 headers 相应头"
+    },
+    "IHttpEvent": {
+      "name": "IHttpEvent",
+      "module": "exia-net",
+      "description": "",
+      "methods": [
+        {
+          "name": "onComplete",
+          "signature": "onComplete(response: IHttpResponse): void;",
+          "description": "网络请求成功",
+          "searchText": "onComplete 网络请求成功"
+        },
+        {
+          "name": "onError",
+          "signature": "onError(response: IHttpResponse): void;",
+          "description": "网络请求失败",
+          "searchText": "onError 网络请求失败"
+        }
+      ],
+      "properties": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "名称"
+        },
+        {
+          "name": "data",
+          "type": "any",
+          "description": "自定义参数"
+        }
+      ],
+      "searchText": "IHttpEvent  exia-net onComplete 网络请求成功 onError 网络请求失败 name 名称 data 自定义参数"
+    },
+    "SocketOptions": {
+      "name": "SocketOptions",
+      "module": "exia-net",
+      "description": "",
+      "methods": [],
+      "properties": [
+        {
+          "name": "protocols",
+          "type": "string[]",
+          "description": "给原生平台 和 web 用\r\n一个协议字符串或者一个包含协议字符串的数组。\r\n这些字符串用于指定子协议，这样单个服务器可以实现多个 WebSocket 子协议（\r\n例如，你可能希望一台服务器能够根据指定的协议（protocol）处理不同类型的交互。\r\n如果不指定协议字符串，则假定为空字符串。"
+        },
+        {
+          "name": "binaryType",
+          "type": "BinaryType",
+          "description": "使用 Blob 对象处理二进制数据。这是默认值\r\n使用 ArrayBuffer 对象处理二进制数据"
+        },
+        {
+          "name": "timeout",
+          "type": "number",
+          "description": "超时时间 默认3000毫秒"
+        }
+      ],
+      "searchText": "SocketOptions  exia-net  protocols 给原生平台 和 web 用\r\n一个协议字符串或者一个包含协议字符串的数组。\r\n这些字符串用于指定子协议，这样单个服务器可以实现多个 WebSocket 子协议（\r\n例如，你可能希望一台服务器能够根据指定的协议（protocol）处理不同类型的交互。\r\n如果不指定协议字符串，则假定为空字符串。 binaryType 使用 Blob 对象处理二进制数据。这是默认值\r\n使用 ArrayBuffer 对象处理二进制数据 timeout 超时时间 默认3000毫秒"
+    },
+    "ISocket": {
+      "name": "ISocket",
+      "module": "exia-net",
+      "description": "",
+      "methods": [
+        {
+          "name": "connect",
+          "signature": "connect(urlOrIp: string, port?: number): boolean;",
+          "description": "连接到WebSocket服务器",
+          "searchText": "connect \r\n连接到WebSocket服务器"
+        },
+        {
+          "name": "send",
+          "signature": "send(data: WsData): boolean;",
+          "description": "发送数据",
+          "searchText": "send \r\n发送数据"
+        },
+        {
+          "name": "close",
+          "signature": "close(code?: number, reason?: string): void;",
+          "description": "关闭WebSocket连接",
+          "searchText": "close \r\n关闭WebSocket连接"
+        }
+      ],
+      "properties": [
+        {
+          "name": "onConnected",
+          "type": "() => void",
+          "description": "连接成功时的回调"
+        },
+        {
+          "name": "onMessage",
+          "type": "(msg: import(\"D:/code/exia/exia-framework-mcp/dts/framework/exia-net\").WsData) => void",
+          "description": "收到消息时的回调"
+        },
+        {
+          "name": "onError",
+          "type": "(error: string) => void",
+          "description": "错误处理回调"
+        },
+        {
+          "name": "onClosed",
+          "type": "() => void",
+          "description": "连接关闭时的回调"
+        },
+        {
+          "name": "isActive",
+          "type": "boolean",
+          "description": "获取当前连接状态"
+        }
+      ],
+      "searchText": "ISocket  exia-net connect \r\n连接到WebSocket服务器 send \r\n发送数据 close \r\n关闭WebSocket连接 onConnected 连接成功时的回调 onMessage 收到消息时的回调 onError 错误处理回调 onClosed 连接关闭时的回调 isActive 获取当前连接状态"
+    },
+    "IPropsConfig": {
+      "name": "IPropsConfig",
+      "module": "exia-ui",
+      "description": "",
+      "methods": [],
+      "properties": [],
+      "searchText": "IPropsConfig  exia-ui  "
+    },
+    "IPropsInfo": {
+      "name": "IPropsInfo",
+      "module": "exia-ui",
+      "description": "",
+      "methods": [],
+      "properties": [
+        {
+          "name": "props",
+          "type": "(string | number)[]",
+          "description": ""
+        },
+        {
+          "name": "callbacks",
+          "type": "(string | number)[]",
+          "description": ""
+        },
+        {
+          "name": "controls",
+          "type": "string[]",
+          "description": ""
+        },
+        {
+          "name": "transitions",
+          "type": "string[]",
+          "description": ""
+        }
+      ],
+      "searchText": "IPropsInfo  exia-ui  props  callbacks  controls  transitions "
+    },
+    "uicontrol": {
+      "name": "uicontrol",
+      "module": "exia-ui",
+      "description": "UI控制器装饰器",
+      "kind": "function",
+      "signature": "function uicontrol(target: Object, name: string): any;",
+      "methods": [],
+      "properties": [],
+      "searchText": "uicontrol UI控制器装饰器 exia-ui"
+    }
+  },
+  "modules": {
+    "exia-assets": [
+      "AssetInfo",
+      "AssetLoaderAgent",
+      "AssetLoader",
+      "AssetPool",
+      "AssetUtils",
+      "IAssetConfig"
+    ],
+    "exia-ccui": [
+      "Header",
+      "HeaderInfo",
+      "WindowGroup",
+      "WindowBase",
+      "Window",
+      "WindowManager",
+      "CocosWindowContainer",
+      "UIModule",
+      "IDecoratorInfo",
+      "IHeader",
+      "IWindow",
+      "IWindowInfo",
+      "getWindowMaps",
+      "getComponentMaps",
+      "getHeaderMaps",
+      "uiclass",
+      "uicom",
+      "uiheader",
+      "uiprop",
+      "uiclick",
+      "uitransition"
+    ],
+    "exia-core": [
+      "Adapter",
+      "CocosEntry",
+      "Module",
+      "Platform",
+      "Screen",
+      "Binary",
+      "Time",
+      "Utils",
+      "GlobalTimer",
+      "InnerTimer",
+      "HeapNode",
+      "BinaryHeap",
+      "LinkedNode",
+      "DoublyNode",
+      "LinkedList",
+      "DoublyLinkedList",
+      "Stack",
+      "IPromiseResult",
+      "ICheckUpdatePromiseResult",
+      "enableDebugMode",
+      "log",
+      "debug",
+      "info",
+      "warn",
+      "error",
+      "md5"
+    ],
+    "exia-data": [
+      "DataCompFormatUtil",
+      "DataSys",
+      "dataComp",
+      "dataWatcher",
+      "dataCompDependency"
+    ],
+    "exia-event": [
+      "EventManager",
+      "GlobalEvent"
+    ],
+    "exia-net": [
+      "HttpRequest",
+      "HttpManager",
+      "HttpTask",
+      "Socket",
+      "Ws",
+      "Message",
+      "WsPacker",
+      "ReadNetFile",
+      "Crypto",
+      "IHttpRequest",
+      "IHttpResponse",
+      "IHttpEvent",
+      "SocketOptions",
+      "ISocket"
+    ],
+    "exia-ui": [
+      "Header",
+      "HeaderInfo",
+      "WindowGroup",
+      "WindowBase",
+      "Window",
+      "WindowManager",
+      "UIModule",
+      "IDecoratorInfo",
+      "IHeader",
+      "IWindow",
+      "IPropsConfig",
+      "IPropsInfo",
+      "getWindowMaps",
+      "getComponentMaps",
+      "getHeaderMaps",
+      "uiclass",
+      "uicom",
+      "uiheader",
+      "uiprop",
+      "uicontrol",
+      "uitransition",
+      "uiclick"
+    ]
+  }
+}
