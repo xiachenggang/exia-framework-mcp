@@ -1,4 +1,4 @@
-import { Component, Node } from 'cc';
+import { Component, Node, Constructor } from 'cc';
 import { Module } from '@xiacg/exia-core';
 
 /** 窗口显示时对其他窗口的处理方式 */
@@ -114,6 +114,11 @@ interface IWindowInfo {
 
 /**
  * @Description: 窗口组
+ *
+ * 改动：_createWindow 支持自动挂载脚本
+ *  - 若预制体根节点已挂载 WindowBase 子类组件 → 沿用（兼容旧流程）
+ *  - 若未挂载 → 用 InfoPool 中记录的 ctor 动态 addComponent
+ *    这样预制体可以是"纯美术节点树"，脚本完全由代码管理，不依赖编辑器手动挂载
  */
 
 declare class WindowGroup {
@@ -124,9 +129,6 @@ declare class WindowGroup {
     get isIgnore(): boolean;
     constructor(name: string, root: Node, ignoreQuery: boolean, swallowTouch: boolean);
     showWindow<T = any, U = any>(info: IWindowInfo, userdata?: T): Promise<IWindow<T, U>>;
-    /**
-     * 从已加载的 Prefab 实例化窗口，挂载到当前组的根节点
-     */
     private _createWindow;
     private _showAdjustment;
     private _moveWindowToTop;
@@ -252,13 +254,14 @@ declare class WindowManager {
 }
 
 /**
- * @Description: UI 装饰器（纯 TypeScript）
+ * @Description: UI 装饰器（扩展版）
  *
- * 变化说明：
- *  - @uiclass  第二参数由 pkgName 改为 prefabPath（Cocos bundle 内路径，不含扩展名）
- *  - @uiprop   改为工厂形式 @uiprop() 或 @uiprop('nodePath')，支持层级路径
- *  - @uiclick  改为工厂形式 @uiclick('nodePath')，显式指定按钮节点路径
- *  - @uitransition 改为工厂形式 @uitransition('animClipName')
+ * 新增：
+ *  @uicomponent(ComponentType, nodePath?)
+ *    自动将子节点（或根节点）上的指定 Component 实例绑定到属性，
+ *    无需在 onInit 中手动调用 getComponent。
+ *
+ * 其余装饰器与原版保持一致。
  */
 
 declare namespace _uidecorator {
@@ -267,50 +270,70 @@ declare namespace _uidecorator {
     function getHeaderMaps(): Map<any, IDecoratorInfo>;
     /**
      * 窗口装饰器
-     * @param groupName       窗口组名
-     * @param prefabPath      预制体在 bundle 内的路径（不含扩展名），如 "ui/ShopWindow"
-     * @param name            注册名（与类名相同，用于防混淆）
-     * @param inlinePrefabPaths 额外需要提前加载的预制体路径列表（动态 instantiate 的子预制体）
-     * @param bundleName      所在 bundle，默认 "resources"
+     * @param groupName         窗口组名
+     * @param prefabPath        预制体在 bundle 内的路径（不含扩展名）
+     * @param name              注册名（与类名相同，防混淆）
+     * @param inlinePrefabPaths 额外需要提前加载的预制体路径列表
+     * @param bundleName        所在 bundle，默认 "resources"
      *
      * @example
+     * // 预制体根节点已在编辑器挂好脚本（旧流程，兼容）
      * @uiclass("MainGroup", "ui/ShopWindow", "ShopWindow")
-     * @uiclass("MainGroup", "ui/ShopWindow", "ShopWindow", ["ui/ItemCell"], "mainBundle")
+     *
+     * // 纯美术预制体，框架自动 addComponent（新流程）
+     * @uiclass("MainGroup", "ui/ShopWindow", "ShopWindow")
+     * export class ShopWindow extends Window { ... }
+     * // _createWindow 发现根节点没有 ShopWindow 组件时，自动 addComponent(ShopWindow)
      */
     function uiclass(groupName: string, prefabPath: string, name: string, inlinePrefabPaths?: string[] | string, bundleName?: string): Function;
-    /**
-     * UI 自定义组件装饰器
-     * @param prefabPath 预制体路径
-     * @param name       注册名
-     * @param bundleName 所在 bundle
-     */
+    /** UI 自定义组件装饰器 */
     function uicom(prefabPath: string, name: string, bundleName?: string): Function;
-    /**
-     * Header 装饰器
-     * @param prefabPath 预制体路径
-     * @param name       注册名
-     * @param bundleName 所在 bundle
-     */
+    /** Header 装饰器 */
     function uiheader(prefabPath: string, name: string, bundleName?: string): Function;
     /**
-     * UI 节点属性装饰器（工厂形式）
-     * 通过 PropsHelper 在 onInit 前自动将子节点赋值到该属性。
+     * 节点属性装饰器 —— 绑定子节点 Node
      *
-     * @param nodePath 子节点路径（相对于窗口根节点），省略时使用属性名
+     * @param nodePath 子节点路径（省略时使用属性名）
      *
      * @example
-     * @uiprop()                  // 查找名为 "btnClose" 的子节点
+     * @uiprop()               // 查找名为 "btnClose" 的子节点
      * btnClose: Node;
      *
-     * @uiprop('Panel/BtnClose')  // 按路径查找
+     * @uiprop('Panel/BtnClose')
      * btnClose: Node;
      */
     function uiprop(nodePath?: string): (target: Object, propName: string) => void;
     /**
-     * 点击事件装饰器（工厂形式）
-     * 在 PropsHelper 序列化时自动为指定节点绑定 Button.EventType.CLICK 或 TOUCH_END。
+     * 组件属性装饰器 —— 绑定子节点上的 Component 实例（新增）
      *
-     * @param nodePath 按钮节点路径（相对于窗口根节点）
+     * PropsHelper 会在序列化阶段自动调用 targetNode.getComponent(ComponentType)
+     * 并将结果赋值给该属性，无需在 onInit 手动获取。
+     *
+     * @param componentType  要获取的 Component 类型
+     * @param nodePath       子节点路径（省略时在根节点上找该组件）
+     *
+     * @example
+     * // 在根节点上找 Label 组件
+     * @uicomponent(Label)
+     * titleLabel: Label;
+     *
+     * // 在子节点 "Panel/LblGold" 上找 Label 组件
+     * @uicomponent(Label, 'Panel/LblGold')
+     * lblGold: Label;
+     *
+     * // 在子节点 "BtnBuy" 上找 Button 组件
+     * @uicomponent(Button, 'BtnBuy')
+     * btnBuy: Button;
+     *
+     * // 在子节点 "SpineNode" 上找自定义 sp.Skeleton 组件
+     * @uicomponent(sp.Skeleton, 'SpineNode')
+     * heroSpine: sp.Skeleton;
+     */
+    function uicomponent<T extends Component>(componentType: Constructor<T>, nodePath?: string): (target: Object, propName: string) => void;
+    /**
+     * 点击事件装饰器
+     *
+     * @param nodePath 按钮节点路径
      *
      * @example
      * @uiclick('btnClose')
@@ -321,16 +344,15 @@ declare namespace _uidecorator {
      */
     function uiclick(nodePath: string): (target: Object, _name: string, descriptor: PropertyDescriptor) => void;
     /**
-     * 动画装饰器（工厂形式）
-     * 将指定动画 clip 名对应的 AnimationState 赋值到属性。
+     * 动画装饰器
      *
-     * @param clipName Animation 组件中的 clip 名称，省略时使用属性名
+     * @param clipName Animation 组件中的 clip 名称（省略时使用属性名）
      *
      * @example
-     * @uitransition()          // clip 名 = "openAnim"
+     * @uitransition()
      * openAnim: AnimationState;
      *
-     * @uitransition('open')    // clip 名 = "open"
+     * @uitransition('open')
      * openAnim: AnimationState;
      */
     function uitransition(clipName?: string): (target: Object, propName: string) => void;
