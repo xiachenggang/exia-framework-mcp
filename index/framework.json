@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "buildTime": "2026-04-11T06:53:15.822Z",
+  "buildTime": "2026-04-16T17:28:07.380Z",
   "classes": {
     "AssetInfo": {
       "name": "AssetInfo",
@@ -185,6 +185,940 @@
       "properties": [],
       "searchText": "AssetUtils  exia-assets getResourceCount 获取资源数量 getUUIDs 获取资源名称 loadBundle 加载 bundle loadFile \n加载单个资源 loadDir \n加载文件夹下的资源 "
     },
+    "RemoteAssetManager": {
+      "name": "RemoteAssetManager",
+      "module": "exia-assets",
+      "description": "",
+      "methods": [
+        {
+          "name": "configure",
+          "signature": "configure(opts:",
+          "description": "",
+          "searchText": "configure "
+        },
+        {
+          "name": "load",
+          "signature": "load<T extends Asset>(url: string, options?: LoadOptions): Promise<T>;",
+          "description": "加载远程资源（唯一入口）\n\n缓存命中  → refCount++ 直接返回\n请求去重  → 复用进行中的 Promise，不发新请求\n新请求    → 超时保护 + 指数退避重试",
+          "searchText": "load \n加载远程资源（唯一入口）\n\n缓存命中  → refCount++ 直接返回\n请求去重  → 复用进行中的 Promise，不发新请求\n新请求    → 超时保护 + 指数退避重试"
+        },
+        {
+          "name": "addRef",
+          "signature": "addRef(url: string, options?: LoadOptions): boolean;",
+          "description": "手动增加引用（不触发加载）",
+          "searchText": "addRef 手动增加引用（不触发加载）"
+        },
+        {
+          "name": "release",
+          "signature": "release(url: string, options?: LoadOptions): void;",
+          "description": "减少引用，归零时释放底层 Asset",
+          "searchText": "release 减少引用，归零时释放底层 Asset"
+        },
+        {
+          "name": "forceRelease",
+          "signature": "forceRelease(url: string, options?: LoadOptions): void;",
+          "description": "强制释放（忽略引用计数）",
+          "searchText": "forceRelease 强制释放（忽略引用计数）"
+        },
+        {
+          "name": "releaseAll",
+          "signature": "releaseAll(): void;",
+          "description": "释放全部缓存",
+          "searchText": "releaseAll 释放全部缓存"
+        },
+        {
+          "name": "releaseIdle",
+          "signature": "releaseIdle(maxIdleMs: number): void;",
+          "description": "释放空闲超过指定时长且 refCount=0 的条目",
+          "searchText": "releaseIdle 释放空闲超过指定时长且 refCount=0 的条目"
+        },
+        {
+          "name": "has",
+          "signature": "has(url: string, opts?: LoadOptions): boolean;",
+          "description": "",
+          "searchText": "has "
+        },
+        {
+          "name": "isLoading",
+          "signature": "isLoading(url: string, opts?: LoadOptions): boolean;",
+          "description": "",
+          "searchText": "isLoading "
+        },
+        {
+          "name": "getRefCount",
+          "signature": "getRefCount(url: string, opts?: LoadOptions): number;",
+          "description": "",
+          "searchText": "getRefCount "
+        },
+        {
+          "name": "dump",
+          "signature": "dump(): any[];",
+          "description": "",
+          "searchText": "dump "
+        },
+        {
+          "name": "_key",
+          "signature": "_key(url: string, opts?: LoadOptions): string;",
+          "description": "缓存 key = url + type + ext",
+          "searchText": "_key 缓存 key = url + type + ext"
+        }
+      ],
+      "properties": [
+        {
+          "name": "_inst",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_cache",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_pending",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_defaultRetry",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_defaultTimeout",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_maxCacheSize",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_loadWithRetry",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_loadOnce",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_estimateSize",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_evictLRU",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_destroy",
+          "type": "any",
+          "description": ""
+        }
+      ],
+      "searchText": "RemoteAssetManager  exia-assets configure  load \n加载远程资源（唯一入口）\n\n缓存命中  → refCount++ 直接返回\n请求去重  → 复用进行中的 Promise，不发新请求\n新请求    → 超时保护 + 指数退避重试 addRef 手动增加引用（不触发加载） release 减少引用，归零时释放底层 Asset forceRelease 强制释放（忽略引用计数） releaseAll 释放全部缓存 releaseIdle 释放空闲超过指定时长且 refCount=0 的条目 has  isLoading  getRefCount  dump  _key 缓存 key = url + type + ext _inst  _cache  _pending  _defaultRetry  _defaultTimeout  _maxCacheSize  _loadWithRetry  _loadOnce  _estimateSize  _evictLRU  _destroy "
+    },
+    "RemoteSpriteLoader": {
+      "name": "RemoteSpriteLoader",
+      "module": "exia-assets",
+      "description": "",
+      "extends": "Component",
+      "methods": [
+        {
+          "name": "onLoad",
+          "signature": "onLoad(): void;",
+          "description": "",
+          "searchText": "onLoad "
+        },
+        {
+          "name": "onDestroy",
+          "signature": "onDestroy(): void;",
+          "description": "",
+          "searchText": "onDestroy "
+        },
+        {
+          "name": "loadUrl",
+          "signature": "loadUrl(url: string): Promise<boolean>;",
+          "description": "加载并切换到新的远程图片\n\n完整流程：\n 1. 序列号 +1（使旧的进行中请求失效）\n 2. 显示占位状态\n 3. 通过 RemoteSpriteManager.acquire 获取 SpriteHandle\n      └─ 内部调用 RemoteAssetManager.load（去重/重试/缓存）\n      └─ 内部管理 Texture2D 共享池\n 4. 序列号校验（若已过期则立即释放刚加载的 handle）\n 5. 释放旧 handle（三层资源链逐层释放）\n 6. 应用新 SpriteFrame + 可选淡入动画",
+          "searchText": "loadUrl \n加载并切换到新的远程图片\n\n完整流程：\n 1. 序列号 +1（使旧的进行中请求失效）\n 2. 显示占位状态\n 3. 通过 RemoteSpriteManager.acquire 获取 SpriteHandle\n      └─ 内部调用 RemoteAssetManager.load（去重/重试/缓存）\n      └─ 内部管理 Texture2D 共享池\n 4. 序列号校验（若已过期则立即释放刚加载的 handle）\n 5. 释放旧 handle（三层资源链逐层释放）\n 6. 应用新 SpriteFrame + 可选淡入动画\n"
+        },
+        {
+          "name": "clear",
+          "signature": "clear(): void;",
+          "description": "清空显示并释放资源",
+          "searchText": "clear \n清空显示并释放资源"
+        },
+        {
+          "name": "reload",
+          "signature": "reload(): Promise<boolean>;",
+          "description": "强制刷新（清缓存重新下载）",
+          "searchText": "reload \n强制刷新（清缓存重新下载）"
+        }
+      ],
+      "properties": [
+        {
+          "name": "initialUrl",
+          "type": "string",
+          "description": ""
+        },
+        {
+          "name": "placeholderColor",
+          "type": "Color",
+          "description": ""
+        },
+        {
+          "name": "autoLoad",
+          "type": "boolean",
+          "description": ""
+        },
+        {
+          "name": "fadeInDuration",
+          "type": "number",
+          "description": ""
+        },
+        {
+          "name": "_sprite",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_currentHandle",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_currentUrl",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_seq",
+          "type": "any",
+          "description": "加载序列号，防止快速切换竞态"
+        },
+        {
+          "name": "_loading",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_releaseCurrentHandle",
+          "type": "any",
+          "description": "释放当前持有的 SpriteHandle\nhandle.release() 内部会完成三层释放：\n  SpriteFrame.destroy → Texture2D 引用-1 → ImageAsset 引用-1"
+        },
+        {
+          "name": "_showPlaceholder",
+          "type": "any",
+          "description": "显示占位状态"
+        },
+        {
+          "name": "_applyToSprite",
+          "type": "any",
+          "description": "将 handle 的 spriteFrame 应用到 Sprite 上"
+        },
+        {
+          "name": "_fadeIn",
+          "type": "any",
+          "description": "简易淡入（避免引入 tween 依赖）"
+        }
+      ],
+      "searchText": "RemoteSpriteLoader  exia-assets onLoad  onDestroy  loadUrl \n加载并切换到新的远程图片\n\n完整流程：\n 1. 序列号 +1（使旧的进行中请求失效）\n 2. 显示占位状态\n 3. 通过 RemoteSpriteManager.acquire 获取 SpriteHandle\n      └─ 内部调用 RemoteAssetManager.load（去重/重试/缓存）\n      └─ 内部管理 Texture2D 共享池\n 4. 序列号校验（若已过期则立即释放刚加载的 handle）\n 5. 释放旧 handle（三层资源链逐层释放）\n 6. 应用新 SpriteFrame + 可选淡入动画\n clear \n清空显示并释放资源 reload \n强制刷新（清缓存重新下载） initialUrl  placeholderColor  autoLoad  fadeInDuration  _sprite  _currentHandle  _currentUrl  _seq 加载序列号，防止快速切换竞态 _loading  _releaseCurrentHandle 释放当前持有的 SpriteHandle\nhandle.release() 内部会完成三层释放：\n  SpriteFrame.destroy → Texture2D 引用-1 → ImageAsset 引用-1 _showPlaceholder 显示占位状态 _applyToSprite 将 handle 的 spriteFrame 应用到 Sprite 上 _fadeIn 简易淡入（避免引入 tween 依赖）"
+    },
+    "RemoteSpineManager": {
+      "name": "RemoteSpineManager",
+      "module": "exia-assets",
+      "description": "",
+      "methods": [
+        {
+          "name": "acquire",
+          "signature": "acquire(config: SpineLoadConfig): Promise<SpineHandle>;",
+          "description": "获取远程 Spine 资源\n\n完整流程：\n 1. 检查池中是否已有 → refCount++ 直接返回\n 2. 检查是否正在加载 → 复用 Promise（去重）\n 3. 并行加载三类资源：\n    · skeleton JSON/Binary → 自带重试的 XHR\n    · atlas text           → 自带重试的 XHR\n    · textures (N 张)      → RemoteAssetManager（享受全部能力）\n 4. 解析 atlas 提取纹理文件名\n 5. 组装 sp.SkeletonData\n 6. 返回 SpineHandle（含一次性 release 回调）",
+          "searchText": "acquire \n获取远程 Spine 资源\n\n完整流程：\n 1. 检查池中是否已有 → refCount++ 直接返回\n 2. 检查是否正在加载 → 复用 Promise（去重）\n 3. 并行加载三类资源：\n    · skeleton JSON/Binary → 自带重试的 XHR\n    · atlas text           → 自带重试的 XHR\n    · textures (N 张)      → RemoteAssetManager（享受全部能力）\n 4. 解析 atlas 提取纹理文件名\n 5. 组装 sp.SkeletonData\n 6. 返回 SpineHandle（含一次性 release 回调）"
+        },
+        {
+          "name": "preload",
+          "signature": "preload(config: SpineLoadConfig): Promise<void>;",
+          "description": "预加载（不占引用）",
+          "searchText": "preload \n预加载（不占引用）"
+        },
+        {
+          "name": "getRefCount",
+          "signature": "getRefCount(config: SpineLoadConfig): number;",
+          "description": "",
+          "searchText": "getRefCount "
+        },
+        {
+          "name": "dump",
+          "signature": "dump(): any[];",
+          "description": "",
+          "searchText": "dump "
+        },
+        {
+          "name": "purgeAll",
+          "signature": "purgeAll(): void;",
+          "description": "强制清空全部",
+          "searchText": "purgeAll 强制清空全部"
+        },
+        {
+          "name": "_parseAtlasPages",
+          "signature": "static _parseAtlasPages(atlasText: string): string[];",
+          "description": "从 atlas 文本中提取纹理页文件名\n\n兼容 Spine 3.x 和 4.x atlas 格式：\n  - 非缩进行\n  - 不含冒号（排除 size: / filter: 等属性行）\n  - 以图片扩展名结尾\n\n示例 atlas 片段：\n  hero.png              ← 匹配 ✓\n  size: 1024,1024       ← 不匹配（含冒号）\n  filter: Linear,Linear ← 不匹配（含冒号）\n    rotate: false       ← 不匹配（缩进）\n  hero2.png             ← 匹配 ✓",
+          "searchText": "_parseAtlasPages \n从 atlas 文本中提取纹理页文件名\n\n兼容 Spine 3.x 和 4.x atlas 格式：\n  - 非缩进行\n  - 不含冒号（排除 size: / filter: 等属性行）\n  - 以图片扩展名结尾\n\n示例 atlas 片段：\n  hero.png              ← 匹配 ✓\n  size: 1024,1024       ← 不匹配（含冒号）\n  filter: Linear,Linear ← 不匹配（含冒号）\n    rotate: false       ← 不匹配（缩进）\n  hero2.png             ← 匹配 ✓"
+        }
+      ],
+      "properties": [
+        {
+          "name": "_inst",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_pool",
+          "type": "any",
+          "description": "key → 共享的 SkeletonData 条目"
+        },
+        {
+          "name": "_loading",
+          "type": "any",
+          "description": "key → 进行中的加载（去重）"
+        },
+        {
+          "name": "_defaultRetry",
+          "type": "any",
+          "description": "默认重试配置（文本/二进制资源，图片走 RemoteAssetManager 自己的配置）"
+        },
+        {
+          "name": "_defaultTimeout",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_makeKey",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_doLoad",
+          "type": "any",
+          "description": "执行完整的三阶段加载"
+        },
+        {
+          "name": "_wrapHandle",
+          "type": "any",
+          "description": "包装为 SpineHandle（含一次性 release）"
+        },
+        {
+          "name": "_releaseOne",
+          "type": "any",
+          "description": "★ 释放链路 ★\n\nrefCount-- → 归零后：\n 1. sp.SkeletonData.destroy()     ← 骨骼数据\n 2. Texture2D[].forEach(destroy)  ← GPU 显存\n 3. remoteAssets.release() × N    ← ImageAsset 引用计数"
+        },
+        {
+          "name": "_destroyEntry",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_fetchJson",
+          "type": "any",
+          "description": "带重试的 JSON 加载"
+        },
+        {
+          "name": "_fetchText",
+          "type": "any",
+          "description": "带重试的文本加载"
+        },
+        {
+          "name": "_fetchBinary",
+          "type": "any",
+          "description": "带重试的二进制加载"
+        },
+        {
+          "name": "_fetchWithRetry",
+          "type": "any",
+          "description": "通用 XHR 请求 + 指数退避重试"
+        },
+        {
+          "name": "_xhrOnce",
+          "type": "any",
+          "description": ""
+        }
+      ],
+      "searchText": "RemoteSpineManager  exia-assets acquire \n获取远程 Spine 资源\n\n完整流程：\n 1. 检查池中是否已有 → refCount++ 直接返回\n 2. 检查是否正在加载 → 复用 Promise（去重）\n 3. 并行加载三类资源：\n    · skeleton JSON/Binary → 自带重试的 XHR\n    · atlas text           → 自带重试的 XHR\n    · textures (N 张)      → RemoteAssetManager（享受全部能力）\n 4. 解析 atlas 提取纹理文件名\n 5. 组装 sp.SkeletonData\n 6. 返回 SpineHandle（含一次性 release 回调） preload \n预加载（不占引用） getRefCount  dump  purgeAll 强制清空全部 _parseAtlasPages \n从 atlas 文本中提取纹理页文件名\n\n兼容 Spine 3.x 和 4.x atlas 格式：\n  - 非缩进行\n  - 不含冒号（排除 size: / filter: 等属性行）\n  - 以图片扩展名结尾\n\n示例 atlas 片段：\n  hero.png              ← 匹配 ✓\n  size: 1024,1024       ← 不匹配（含冒号）\n  filter: Linear,Linear ← 不匹配（含冒号）\n    rotate: false       ← 不匹配（缩进）\n  hero2.png             ← 匹配 ✓ _inst  _pool key → 共享的 SkeletonData 条目 _loading key → 进行中的加载（去重） _defaultRetry 默认重试配置（文本/二进制资源，图片走 RemoteAssetManager 自己的配置） _defaultTimeout  _makeKey  _doLoad 执行完整的三阶段加载 _wrapHandle 包装为 SpineHandle（含一次性 release） _releaseOne ★ 释放链路 ★\n\nrefCount-- → 归零后：\n 1. sp.SkeletonData.destroy()     ← 骨骼数据\n 2. Texture2D[].forEach(destroy)  ← GPU 显存\n 3. remoteAssets.release() × N    ← ImageAsset 引用计数 _destroyEntry  _fetchJson 带重试的 JSON 加载 _fetchText 带重试的文本加载 _fetchBinary 带重试的二进制加载 _fetchWithRetry 通用 XHR 请求 + 指数退避重试 _xhrOnce "
+    },
+    "RemoteSpineLoader": {
+      "name": "RemoteSpineLoader",
+      "module": "exia-assets",
+      "description": "",
+      "extends": "Component",
+      "methods": [
+        {
+          "name": "onLoad",
+          "signature": "onLoad(): void;",
+          "description": "",
+          "searchText": "onLoad "
+        },
+        {
+          "name": "onDestroy",
+          "signature": "onDestroy(): void;",
+          "description": "",
+          "searchText": "onDestroy "
+        },
+        {
+          "name": "loadSpine",
+          "signature": "loadSpine(config: SpineLoadConfig): Promise<boolean>;",
+          "description": "加载并切换远程 Spine 资源\n\n流程：\n 1. 序列号 +1（旧的进行中请求自动失效）\n 2. RemoteSpineManager.acquire → 并行加载三件套\n 3. 序列号校验\n 4. 释放旧 handle（触发三层释放链）\n 5. 赋值 SkeletonData → 自动播放动画",
+          "searchText": "loadSpine \n加载并切换远程 Spine 资源\n\n流程：\n 1. 序列号 +1（旧的进行中请求自动失效）\n 2. RemoteSpineManager.acquire → 并行加载三件套\n 3. 序列号校验\n 4. 释放旧 handle（触发三层释放链）\n 5. 赋值 SkeletonData → 自动播放动画\n"
+        },
+        {
+          "name": "loadUrl",
+          "signature": "loadUrl(skelUrl: string, atlasUrl?: string): Promise<boolean>;",
+          "description": "便捷方法：只传 URL",
+          "searchText": "loadUrl \n便捷方法：只传 URL"
+        },
+        {
+          "name": "clear",
+          "signature": "clear(): void;",
+          "description": "清空显示并释放资源",
+          "searchText": "clear \n清空显示并释放资源"
+        },
+        {
+          "name": "setAnimation",
+          "signature": "setAnimation(name: string, loop?: boolean, trackIndex?: number): void;",
+          "description": "设置当前动画",
+          "searchText": "setAnimation \n设置当前动画"
+        },
+        {
+          "name": "addAnimation",
+          "signature": "addAnimation(name: string, loop?: boolean, delay?: number, trackIndex?: number): void;",
+          "description": "添加后续动画",
+          "searchText": "addAnimation \n添加后续动画"
+        },
+        {
+          "name": "setSkin",
+          "signature": "setSkin(skinName: string): void;",
+          "description": "设置皮肤",
+          "searchText": "setSkin \n设置皮肤"
+        },
+        {
+          "name": "getAnimationNames",
+          "signature": "getAnimationNames(): string[];",
+          "description": "获取所有动画名",
+          "searchText": "getAnimationNames \n获取所有动画名"
+        },
+        {
+          "name": "reload",
+          "signature": "reload(): Promise<boolean>;",
+          "description": "强制刷新",
+          "searchText": "reload \n强制刷新"
+        }
+      ],
+      "properties": [
+        {
+          "name": "initialSkelUrl",
+          "type": "string",
+          "description": ""
+        },
+        {
+          "name": "initialAtlasUrl",
+          "type": "string",
+          "description": ""
+        },
+        {
+          "name": "autoPlayAnimation",
+          "type": "string",
+          "description": ""
+        },
+        {
+          "name": "autoPlayLoop",
+          "type": "boolean",
+          "description": ""
+        },
+        {
+          "name": "autoLoad",
+          "type": "boolean",
+          "description": ""
+        },
+        {
+          "name": "_skeleton",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_currentHandle",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_currentKey",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_seq",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_loading",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_releaseCurrentHandle",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_applyToSkeleton",
+          "type": "any",
+          "description": ""
+        }
+      ],
+      "searchText": "RemoteSpineLoader  exia-assets onLoad  onDestroy  loadSpine \n加载并切换远程 Spine 资源\n\n流程：\n 1. 序列号 +1（旧的进行中请求自动失效）\n 2. RemoteSpineManager.acquire → 并行加载三件套\n 3. 序列号校验\n 4. 释放旧 handle（触发三层释放链）\n 5. 赋值 SkeletonData → 自动播放动画\n loadUrl \n便捷方法：只传 URL clear \n清空显示并释放资源 setAnimation \n设置当前动画 addAnimation \n添加后续动画 setSkin \n设置皮肤 getAnimationNames \n获取所有动画名 reload \n强制刷新 initialSkelUrl  initialAtlasUrl  autoPlayAnimation  autoPlayLoop  autoLoad  _skeleton  _currentHandle  _currentKey  _seq  _loading  _releaseCurrentHandle  _applyToSkeleton "
+    },
+    "RemoteSpriteManager": {
+      "name": "RemoteSpriteManager",
+      "module": "exia-assets",
+      "description": "",
+      "methods": [
+        {
+          "name": "acquire",
+          "signature": "acquire(url: string, retry?: LoadOptions['retry']): Promise<SpriteHandle>;",
+          "description": "获取远程图片的 SpriteFrame\n\n内部流程：\n 1. 通过 RemoteAssetManager.load 获取 ImageAsset（享受去重/重试/缓存）\n 2. 查纹理池：有则复用 Texture2D，无则新建\n 3. 创建独立的 SpriteFrame 返回给调用者\n 4. 返回 SpriteHandle，内含一次性 release() 回调",
+          "searchText": "acquire \n获取远程图片的 SpriteFrame\n\n内部流程：\n 1. 通过 RemoteAssetManager.load 获取 ImageAsset（享受去重/重试/缓存）\n 2. 查纹理池：有则复用 Texture2D，无则新建\n 3. 创建独立的 SpriteFrame 返回给调用者\n 4. 返回 SpriteHandle，内含一次性 release() 回调\n"
+        },
+        {
+          "name": "acquireBatch",
+          "signature": "acquireBatch(urls: string[], onProgress?: (loaded: number, total: number) => void): Promise<SpriteHandle[]>;",
+          "description": "批量获取",
+          "searchText": "acquireBatch \n批量获取"
+        },
+        {
+          "name": "preload",
+          "signature": "preload(url: string): Promise<void>;",
+          "description": "预热（加载到缓存但不占用纹理池引用）",
+          "searchText": "preload \n预热（加载到缓存但不占用纹理池引用）"
+        },
+        {
+          "name": "getTextureRefCount",
+          "signature": "getTextureRefCount(url: string): number;",
+          "description": "某 url 的 Texture2D 引用计数",
+          "searchText": "getTextureRefCount 某 url 的 Texture2D 引用计数"
+        },
+        {
+          "name": "dump",
+          "signature": "dump(): any[];",
+          "description": "打印池状态",
+          "searchText": "dump 打印池状态"
+        },
+        {
+          "name": "purgeAll",
+          "signature": "purgeAll(): void;",
+          "description": "强制清空纹理池 + 底层所有缓存",
+          "searchText": "purgeAll 强制清空纹理池 + 底层所有缓存"
+        },
+        {
+          "name": "_guessExt",
+          "signature": "static _guessExt(url: string): string;",
+          "description": "",
+          "searchText": "_guessExt "
+        }
+      ],
+      "properties": [
+        {
+          "name": "_inst",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_texPool",
+          "type": "any",
+          "description": "url → 共享的 Texture2D 条目"
+        },
+        {
+          "name": "_releaseOne",
+          "type": "any",
+          "description": "释放单个 SpriteFrame + 对应引用链\n\n释放顺序（由外到内）：\n 1. SpriteFrame.destroy()       — 调用者独有\n 2. 纹理池 refCount--\n    → 归零则 Texture2D.destroy()  — 释放 GPU 显存\n 3. RemoteAssetManager.release() — ImageAsset refCount--\n    → 归零则 decRef + releaseAsset"
+        }
+      ],
+      "searchText": "RemoteSpriteManager  exia-assets acquire \n获取远程图片的 SpriteFrame\n\n内部流程：\n 1. 通过 RemoteAssetManager.load 获取 ImageAsset（享受去重/重试/缓存）\n 2. 查纹理池：有则复用 Texture2D，无则新建\n 3. 创建独立的 SpriteFrame 返回给调用者\n 4. 返回 SpriteHandle，内含一次性 release() 回调\n acquireBatch \n批量获取 preload \n预热（加载到缓存但不占用纹理池引用） getTextureRefCount 某 url 的 Texture2D 引用计数 dump 打印池状态 purgeAll 强制清空纹理池 + 底层所有缓存 _guessExt  _inst  _texPool url → 共享的 Texture2D 条目 _releaseOne 释放单个 SpriteFrame + 对应引用链\n\n释放顺序（由外到内）：\n 1. SpriteFrame.destroy()       — 调用者独有\n 2. 纹理池 refCount--\n    → 归零则 Texture2D.destroy()  — 释放 GPU 显存\n 3. RemoteAssetManager.release() — ImageAsset refCount--\n    → 归零则 decRef + releaseAsset"
+    },
+    "LocalResManager": {
+      "name": "LocalResManager",
+      "module": "exia-assets",
+      "description": "",
+      "methods": [
+        {
+          "name": "load",
+          "signature": "load<T extends Asset>(path: string, type: typeof Asset): Promise<T>;",
+          "description": "加载 resources 下的资源",
+          "searchText": "load \n加载 resources 下的资源\n"
+        },
+        {
+          "name": "loadSpriteFrame",
+          "signature": "loadSpriteFrame(path: string): Promise<SpriteFrame>;",
+          "description": "加载 SpriteFrame\n\n★ resources 下图片资源的路径规则 ★\n\n文件结构:\n  assets/resources/textures/hero.png\n\n编辑器导入后引擎自动生成:\n  hero (ImageAsset)\n    └─ hero/texture (Texture2D)      ← 子资产\n        └─ hero/spriteFrame (SpriteFrame) ← 子资产\n\n所以加载 SpriteFrame 的路径是:\n  \"textures/hero/spriteFrame\"   ← ✅ 正确\n  \"textures/hero\"               ← ❌ 加载的是 ImageAsset\n\n本方法自动补全 \"/spriteFrame\" 后缀",
+          "searchText": "loadSpriteFrame \n加载 SpriteFrame\n\n★ resources 下图片资源的路径规则 ★\n\n文件结构:\n  assets/resources/textures/hero.png\n\n编辑器导入后引擎自动生成:\n  hero (ImageAsset)\n    └─ hero/texture (Texture2D)      ← 子资产\n        └─ hero/spriteFrame (SpriteFrame) ← 子资产\n\n所以加载 SpriteFrame 的路径是:\n  \"textures/hero/spriteFrame\"   ← ✅ 正确\n  \"textures/hero\"               ← ❌ 加载的是 ImageAsset\n\n本方法自动补全 \"/spriteFrame\" 后缀"
+        },
+        {
+          "name": "loadFromAtlas",
+          "signature": "loadFromAtlas(atlasPath: string, frameName: string): Promise<SpriteFrame>;",
+          "description": "从 SpriteAtlas 中获取指定帧",
+          "searchText": "loadFromAtlas \n从 SpriteAtlas 中获取指定帧\n"
+        },
+        {
+          "name": "loadSpriteFrames",
+          "signature": "loadSpriteFrames(paths: string[], onProgress?: (loaded: number, total: number) => void): Promise<SpriteFrame[]>;",
+          "description": "批量加载 SpriteFrame",
+          "searchText": "loadSpriteFrames \n批量加载 SpriteFrame"
+        },
+        {
+          "name": "loadDir",
+          "signature": "loadDir(dir: string): Promise<SpriteFrame[]>;",
+          "description": "加载 resources 下某个目录的全部 SpriteFrame",
+          "searchText": "loadDir \n加载 resources 下某个目录的全部 SpriteFrame\n"
+        },
+        {
+          "name": "preloadSpriteFrame",
+          "signature": "preloadSpriteFrame(path: string): Promise<void>;",
+          "description": "预加载（不占引用计数）",
+          "searchText": "preloadSpriteFrame \n预加载（不占引用计数）"
+        },
+        {
+          "name": "loadSpineData",
+          "signature": "loadSpineData(path: string): Promise<sp.SkeletonData>;",
+          "description": "加载 resources 下的 Spine 骨骼数据\n\n★ 本地 Spine 与远程 Spine 的核心区别 ★\n\n远程 Spine（RemoteSpineManager）:\n  需要自己用 XHR 加载 .json + .atlas + .png\n  手动 new Texture2D、手动组装 sp.SkeletonData\n  释放时必须手动 destroy SkeletonData → Texture2D × N → ImageAsset × N\n\n本地 Spine:\n  编辑器导入 .json + .atlas + .png 后，引擎自动打包成 sp.SkeletonData\n  内部的 Texture2D / atlas 都是引擎管理的子资产，依赖关系已注册\n  只需 decRef(sp.SkeletonData) → 引擎自动释放全链\n  ❌ 绝不要手动 destroy 其内部纹理！\n\n路径规则：\n  文件: assets/resources/spine/hero/hero.json\n                                   hero.atlas\n                                   hero.png\n  加载路径: \"spine/hero/hero\"  ← 指向 .json 主文件（不含扩展名）",
+          "searchText": "loadSpineData \n加载 resources 下的 Spine 骨骼数据\n\n★ 本地 Spine 与远程 Spine 的核心区别 ★\n\n远程 Spine（RemoteSpineManager）:\n  需要自己用 XHR 加载 .json + .atlas + .png\n  手动 new Texture2D、手动组装 sp.SkeletonData\n  释放时必须手动 destroy SkeletonData → Texture2D × N → ImageAsset × N\n\n本地 Spine:\n  编辑器导入 .json + .atlas + .png 后，引擎自动打包成 sp.SkeletonData\n  内部的 Texture2D / atlas 都是引擎管理的子资产，依赖关系已注册\n  只需 decRef(sp.SkeletonData) → 引擎自动释放全链\n  ❌ 绝不要手动 destroy 其内部纹理！\n\n路径规则：\n  文件: assets/resources/spine/hero/hero.json\n                                   hero.atlas\n                                   hero.png\n  加载路径: \"spine/hero/hero\"  ← 指向 .json 主文件（不含扩展名）\n"
+        },
+        {
+          "name": "releaseSpineData",
+          "signature": "releaseSpineData(path: string): void;",
+          "description": "释放 Spine 骨骼数据",
+          "searchText": "releaseSpineData 释放 Spine 骨骼数据"
+        },
+        {
+          "name": "preloadSpineData",
+          "signature": "preloadSpineData(path: string): Promise<void>;",
+          "description": "预加载 Spine（不占引用计数）",
+          "searchText": "preloadSpineData 预加载 Spine（不占引用计数）"
+        },
+        {
+          "name": "loadSpineDataBatch",
+          "signature": "loadSpineDataBatch(paths: string[], onProgress?: (loaded: number, total: number) => void): Promise<sp.SkeletonData[]>;",
+          "description": "批量加载 Spine",
+          "searchText": "loadSpineDataBatch 批量加载 Spine"
+        },
+        {
+          "name": "release",
+          "signature": "release(path: string, type: typeof Asset): void;",
+          "description": "★ resources 资源的正确释放方式 ★\n\n与远程资源完全不同！\n\n远程资源释放（三步手动）:\n  spriteFrame.destroy()        ← 你 new 的\n  texture.destroy()            ← 你 new 的\n  imageAsset.decRef()          ← 引擎的\n  assetManager.releaseAsset()  ← 引擎的\n\n本地资源释放（只需 decRef）:\n  spriteFrame.decRef()\n  → 引擎自动处理：\n    · 追踪到 Texture2D 依赖 → 减其引用\n    · 追踪到 ImageAsset 依赖 → 减其引用\n    · 所有引用归零 → 自动释放全链\n\n❌ 绝对不要这样做：\n  texture.destroy()   // 会破坏引擎依赖追踪！\n  spriteFrame.destroy() // 同上！\n\n✅ 只需要：\n  spriteFrame.decRef()  // 让引擎自己管理",
+          "searchText": "release \n★ resources 资源的正确释放方式 ★\n\n与远程资源完全不同！\n\n远程资源释放（三步手动）:\n  spriteFrame.destroy()        ← 你 new 的\n  texture.destroy()            ← 你 new 的\n  imageAsset.decRef()          ← 引擎的\n  assetManager.releaseAsset()  ← 引擎的\n\n本地资源释放（只需 decRef）:\n  spriteFrame.decRef()\n  → 引擎自动处理：\n    · 追踪到 Texture2D 依赖 → 减其引用\n    · 追踪到 ImageAsset 依赖 → 减其引用\n    · 所有引用归零 → 自动释放全链\n\n❌ 绝对不要这样做：\n  texture.destroy()   // 会破坏引擎依赖追踪！\n  spriteFrame.destroy() // 同上！\n\n✅ 只需要：\n  spriteFrame.decRef()  // 让引擎自己管理"
+        },
+        {
+          "name": "releaseSpriteFrame",
+          "signature": "releaseSpriteFrame(path: string): void;",
+          "description": "释放 SpriteFrame（自动补全路径）",
+          "searchText": "releaseSpriteFrame 释放 SpriteFrame（自动补全路径）"
+        },
+        {
+          "name": "releaseAtlasFrame",
+          "signature": "releaseAtlasFrame(atlasPath: string, frameName: string): void;",
+          "description": "释放图集子帧",
+          "searchText": "releaseAtlasFrame 释放图集子帧"
+        },
+        {
+          "name": "releaseAtlas",
+          "signature": "releaseAtlas(atlasPath: string): void;",
+          "description": "释放图集本身",
+          "searchText": "releaseAtlas 释放图集本身"
+        },
+        {
+          "name": "forceRelease",
+          "signature": "forceRelease(path: string, type: typeof Asset): void;",
+          "description": "强制释放（忽略引用计数）",
+          "searchText": "forceRelease 强制释放（忽略引用计数）"
+        },
+        {
+          "name": "releaseAll",
+          "signature": "releaseAll(): void;",
+          "description": "释放所有缓存",
+          "searchText": "releaseAll 释放所有缓存"
+        },
+        {
+          "name": "releaseIdle",
+          "signature": "releaseIdle(maxIdleMs: number): void;",
+          "description": "释放空闲资源",
+          "searchText": "releaseIdle 释放空闲资源"
+        },
+        {
+          "name": "has",
+          "signature": "has(path: string, type: typeof Asset): boolean;",
+          "description": "",
+          "searchText": "has "
+        },
+        {
+          "name": "getRefCount",
+          "signature": "getRefCount(path: string, type: typeof Asset): number;",
+          "description": "",
+          "searchText": "getRefCount "
+        },
+        {
+          "name": "dump",
+          "signature": "dump(): any[];",
+          "description": "",
+          "searchText": "dump "
+        }
+      ],
+      "properties": [
+        {
+          "name": "_inst",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_cache",
+          "type": "any",
+          "description": "path|type → 缓存条目"
+        },
+        {
+          "name": "_pending",
+          "type": "any",
+          "description": "path|type → 进行中请求"
+        },
+        {
+          "name": "_key",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_doLoad",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_releaseByKey",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_destroy",
+          "type": "any",
+          "description": "★ 本地资源销毁 —— 只 decRef，不 destroy ★"
+        }
+      ],
+      "searchText": "LocalResManager  exia-assets load \n加载 resources 下的资源\n loadSpriteFrame \n加载 SpriteFrame\n\n★ resources 下图片资源的路径规则 ★\n\n文件结构:\n  assets/resources/textures/hero.png\n\n编辑器导入后引擎自动生成:\n  hero (ImageAsset)\n    └─ hero/texture (Texture2D)      ← 子资产\n        └─ hero/spriteFrame (SpriteFrame) ← 子资产\n\n所以加载 SpriteFrame 的路径是:\n  \"textures/hero/spriteFrame\"   ← ✅ 正确\n  \"textures/hero\"               ← ❌ 加载的是 ImageAsset\n\n本方法自动补全 \"/spriteFrame\" 后缀 loadFromAtlas \n从 SpriteAtlas 中获取指定帧\n loadSpriteFrames \n批量加载 SpriteFrame loadDir \n加载 resources 下某个目录的全部 SpriteFrame\n preloadSpriteFrame \n预加载（不占引用计数） loadSpineData \n加载 resources 下的 Spine 骨骼数据\n\n★ 本地 Spine 与远程 Spine 的核心区别 ★\n\n远程 Spine（RemoteSpineManager）:\n  需要自己用 XHR 加载 .json + .atlas + .png\n  手动 new Texture2D、手动组装 sp.SkeletonData\n  释放时必须手动 destroy SkeletonData → Texture2D × N → ImageAsset × N\n\n本地 Spine:\n  编辑器导入 .json + .atlas + .png 后，引擎自动打包成 sp.SkeletonData\n  内部的 Texture2D / atlas 都是引擎管理的子资产，依赖关系已注册\n  只需 decRef(sp.SkeletonData) → 引擎自动释放全链\n  ❌ 绝不要手动 destroy 其内部纹理！\n\n路径规则：\n  文件: assets/resources/spine/hero/hero.json\n                                   hero.atlas\n                                   hero.png\n  加载路径: \"spine/hero/hero\"  ← 指向 .json 主文件（不含扩展名）\n releaseSpineData 释放 Spine 骨骼数据 preloadSpineData 预加载 Spine（不占引用计数） loadSpineDataBatch 批量加载 Spine release \n★ resources 资源的正确释放方式 ★\n\n与远程资源完全不同！\n\n远程资源释放（三步手动）:\n  spriteFrame.destroy()        ← 你 new 的\n  texture.destroy()            ← 你 new 的\n  imageAsset.decRef()          ← 引擎的\n  assetManager.releaseAsset()  ← 引擎的\n\n本地资源释放（只需 decRef）:\n  spriteFrame.decRef()\n  → 引擎自动处理：\n    · 追踪到 Texture2D 依赖 → 减其引用\n    · 追踪到 ImageAsset 依赖 → 减其引用\n    · 所有引用归零 → 自动释放全链\n\n❌ 绝对不要这样做：\n  texture.destroy()   // 会破坏引擎依赖追踪！\n  spriteFrame.destroy() // 同上！\n\n✅ 只需要：\n  spriteFrame.decRef()  // 让引擎自己管理 releaseSpriteFrame 释放 SpriteFrame（自动补全路径） releaseAtlasFrame 释放图集子帧 releaseAtlas 释放图集本身 forceRelease 强制释放（忽略引用计数） releaseAll 释放所有缓存 releaseIdle 释放空闲资源 has  getRefCount  dump  _inst  _cache path|type → 缓存条目 _pending path|type → 进行中请求 _key  _doLoad  _releaseByKey  _destroy ★ 本地资源销毁 —— 只 decRef，不 destroy ★"
+    },
+    "LocalSpineLoader": {
+      "name": "LocalSpineLoader",
+      "module": "exia-assets",
+      "description": "",
+      "extends": "Component",
+      "methods": [
+        {
+          "name": "onLoad",
+          "signature": "onLoad(): void;",
+          "description": "",
+          "searchText": "onLoad "
+        },
+        {
+          "name": "onDestroy",
+          "signature": "onDestroy(): void;",
+          "description": "",
+          "searchText": "onDestroy "
+        },
+        {
+          "name": "loadPath",
+          "signature": "loadPath(path: string): Promise<boolean>;",
+          "description": "加载并切换 resources/ 下的 Spine 资源",
+          "searchText": "loadPath \n加载并切换 resources/ 下的 Spine 资源\n"
+        },
+        {
+          "name": "clear",
+          "signature": "clear(): void;",
+          "description": "清空显示并释放",
+          "searchText": "clear \n清空显示并释放"
+        },
+        {
+          "name": "setAnimation",
+          "signature": "setAnimation(name: string, loop?: boolean, trackIndex?: number): void;",
+          "description": "",
+          "searchText": "setAnimation "
+        },
+        {
+          "name": "addAnimation",
+          "signature": "addAnimation(name: string, loop?: boolean, delay?: number, trackIndex?: number): void;",
+          "description": "",
+          "searchText": "addAnimation "
+        },
+        {
+          "name": "setSkin",
+          "signature": "setSkin(skinName: string): void;",
+          "description": "",
+          "searchText": "setSkin "
+        },
+        {
+          "name": "getAnimationNames",
+          "signature": "getAnimationNames(): string[];",
+          "description": "",
+          "searchText": "getAnimationNames "
+        },
+        {
+          "name": "getSkinNames",
+          "signature": "getSkinNames(): string[];",
+          "description": "",
+          "searchText": "getSkinNames "
+        },
+        {
+          "name": "reload",
+          "signature": "reload(): Promise<boolean>;",
+          "description": "",
+          "searchText": "reload "
+        }
+      ],
+      "properties": [
+        {
+          "name": "initialPath",
+          "type": "string",
+          "description": ""
+        },
+        {
+          "name": "autoPlayAnimation",
+          "type": "string",
+          "description": ""
+        },
+        {
+          "name": "autoPlayLoop",
+          "type": "boolean",
+          "description": ""
+        },
+        {
+          "name": "autoLoad",
+          "type": "boolean",
+          "description": ""
+        },
+        {
+          "name": "_skeleton",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_currentHandle",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_currentPath",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_seq",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_loading",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_releaseCurrent",
+          "type": "any",
+          "description": "释放当前资源\n\n★ 本地 Spine 释放只需 decRef ★\n\nlocalRes.releaseSpineData(path)\n  → LocalResManager._destroy()\n    → skeletonData.decRef()\n      → 引擎自动追踪并释放内部 Texture2D × N + atlas 数据\n\n❌ 绝不要手动 destroy SkeletonData 或其内部纹理"
+        },
+        {
+          "name": "_applyToSkeleton",
+          "type": "any",
+          "description": ""
+        }
+      ],
+      "searchText": "LocalSpineLoader  exia-assets onLoad  onDestroy  loadPath \n加载并切换 resources/ 下的 Spine 资源\n clear \n清空显示并释放 setAnimation  addAnimation  setSkin  getAnimationNames  getSkinNames  reload  initialPath  autoPlayAnimation  autoPlayLoop  autoLoad  _skeleton  _currentHandle  _currentPath  _seq  _loading  _releaseCurrent 释放当前资源\n\n★ 本地 Spine 释放只需 decRef ★\n\nlocalRes.releaseSpineData(path)\n  → LocalResManager._destroy()\n    → skeletonData.decRef()\n      → 引擎自动追踪并释放内部 Texture2D × N + atlas 数据\n\n❌ 绝不要手动 destroy SkeletonData 或其内部纹理 _applyToSkeleton "
+    },
+    "LocalSpriteLoader": {
+      "name": "LocalSpriteLoader",
+      "module": "exia-assets",
+      "description": "",
+      "extends": "Component",
+      "methods": [
+        {
+          "name": "onLoad",
+          "signature": "onLoad(): void;",
+          "description": "",
+          "searchText": "onLoad "
+        },
+        {
+          "name": "onDestroy",
+          "signature": "onDestroy(): void;",
+          "description": "",
+          "searchText": "onDestroy "
+        },
+        {
+          "name": "loadPath",
+          "signature": "loadPath(path: string): Promise<boolean>;",
+          "description": "加载 resources/ 下的图片并切换 SpriteFrame",
+          "searchText": "loadPath \n加载 resources/ 下的图片并切换 SpriteFrame\n"
+        },
+        {
+          "name": "loadFromAtlas",
+          "signature": "loadFromAtlas(atlasPath: string, frameName: string): Promise<boolean>;",
+          "description": "从 SpriteAtlas 图集中加载指定帧",
+          "searchText": "loadFromAtlas \n从 SpriteAtlas 图集中加载指定帧\n"
+        },
+        {
+          "name": "clear",
+          "signature": "clear(): void;",
+          "description": "清空并释放",
+          "searchText": "clear \n清空并释放"
+        }
+      ],
+      "properties": [
+        {
+          "name": "initialPath",
+          "type": "string",
+          "description": ""
+        },
+        {
+          "name": "autoLoad",
+          "type": "boolean",
+          "description": ""
+        },
+        {
+          "name": "_sprite",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_currentHandle",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_currentId",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_seq",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_loading",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "_releaseCurrent",
+          "type": "any",
+          "description": ""
+        }
+      ],
+      "searchText": "LocalSpriteLoader  exia-assets onLoad  onDestroy  loadPath \n加载 resources/ 下的图片并切换 SpriteFrame\n loadFromAtlas \n从 SpriteAtlas 图集中加载指定帧\n clear \n清空并释放 initialPath  autoLoad  _sprite  _currentHandle  _currentId  _seq  _loading  _releaseCurrent "
+    },
     "IAssetConfig": {
       "name": "IAssetConfig",
       "module": "exia-assets",
@@ -213,6 +1147,141 @@
         }
       ],
       "searchText": "IAssetConfig  exia-assets  path bundle名下的资源路径 必填 type 资源类型 默认 Asset isFile 是否是单个文件 默认是文件夹 bundle bundle名 默认 resources"
+    },
+    "RetryPolicy": {
+      "name": "RetryPolicy",
+      "module": "exia-assets",
+      "description": "",
+      "methods": [],
+      "properties": [
+        {
+          "name": "maxRetries",
+          "type": "number",
+          "description": ""
+        },
+        {
+          "name": "baseDelay",
+          "type": "number",
+          "description": ""
+        },
+        {
+          "name": "maxDelay",
+          "type": "number",
+          "description": ""
+        }
+      ],
+      "searchText": "RetryPolicy  exia-assets  maxRetries  baseDelay  maxDelay "
+    },
+    "LoadOptions": {
+      "name": "LoadOptions",
+      "module": "exia-assets",
+      "description": "",
+      "methods": [],
+      "properties": [
+        {
+          "name": "type",
+          "type": "any",
+          "description": ""
+        },
+        {
+          "name": "retry",
+          "type": "Partial<RetryPolicy>",
+          "description": ""
+        },
+        {
+          "name": "timeout",
+          "type": "number",
+          "description": ""
+        },
+        {
+          "name": "ext",
+          "type": "string",
+          "description": ""
+        }
+      ],
+      "searchText": "LoadOptions  exia-assets  type  retry  timeout  ext "
+    },
+    "SpineLoadConfig": {
+      "name": "SpineLoadConfig",
+      "module": "exia-assets",
+      "description": "Spine 加载配置",
+      "methods": [],
+      "properties": [
+        {
+          "name": "skelUrl",
+          "type": "string",
+          "description": "骨骼数据 URL (.json 或 .skel)"
+        },
+        {
+          "name": "atlasUrl",
+          "type": "string",
+          "description": "Atlas 文件 URL，不传则自动从 skelUrl 推导"
+        },
+        {
+          "name": "textureBaseUrl",
+          "type": "string",
+          "description": "纹理基础路径，不传则自动从 atlasUrl 推导"
+        },
+        {
+          "name": "retry",
+          "type": "Partial<RetryPolicy>",
+          "description": "重试策略覆盖"
+        },
+        {
+          "name": "timeout",
+          "type": "number",
+          "description": "单文件超时 ms"
+        }
+      ],
+      "searchText": "SpineLoadConfig Spine 加载配置 exia-assets  skelUrl 骨骼数据 URL (.json 或 .skel) atlasUrl Atlas 文件 URL，不传则自动从 skelUrl 推导 textureBaseUrl 纹理基础路径，不传则自动从 atlasUrl 推导 retry 重试策略覆盖 timeout 单文件超时 ms"
+    },
+    "SpineHandle": {
+      "name": "SpineHandle",
+      "module": "exia-assets",
+      "description": "acquire 返回给上层的句柄",
+      "methods": [],
+      "properties": [
+        {
+          "name": "key",
+          "type": "string",
+          "description": "配置标识"
+        },
+        {
+          "name": "skeletonData",
+          "type": "sp.SkeletonData",
+          "description": "组装好的 SkeletonData，可直接赋给 sp.Skeleton.skeletonData"
+        },
+        {
+          "name": "release",
+          "type": "() => void",
+          "description": "上层必须调用释放"
+        }
+      ],
+      "searchText": "SpineHandle acquire 返回给上层的句柄 exia-assets  key 配置标识 skeletonData 组装好的 SkeletonData，可直接赋给 sp.Skeleton.skeletonData release 上层必须调用释放"
+    },
+    "SpriteHandle": {
+      "name": "SpriteHandle",
+      "module": "exia-assets",
+      "description": "acquire 返回给上层的句柄",
+      "methods": [],
+      "properties": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": ""
+        },
+        {
+          "name": "spriteFrame",
+          "type": "SpriteFrame",
+          "description": ""
+        },
+        {
+          "name": "release",
+          "type": "() => void",
+          "description": "上层必须调用此方法释放"
+        }
+      ],
+      "searchText": "SpriteHandle acquire 返回给上层的句柄 exia-assets  url  spriteFrame  release 上层必须调用此方法释放"
     },
     "Header": {
       "name": "Header",
@@ -2777,7 +3846,20 @@
       "AssetLoader",
       "AssetPool",
       "AssetUtils",
-      "IAssetConfig"
+      "RemoteAssetManager",
+      "RemoteSpriteLoader",
+      "RemoteSpineManager",
+      "RemoteSpineLoader",
+      "RemoteSpriteManager",
+      "LocalResManager",
+      "LocalSpineLoader",
+      "LocalSpriteLoader",
+      "IAssetConfig",
+      "RetryPolicy",
+      "LoadOptions",
+      "SpineLoadConfig",
+      "SpineHandle",
+      "SpriteHandle"
     ],
     "exia-ccui": [
       "Header",
